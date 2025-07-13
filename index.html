@@ -1,10 +1,659 @@
 <!DOCTYPE html>
-<html>
- <head>
-   <title>Wow Page</title>
- </head>
- <body>
-   <h1>Wow</h1>
- </body>
-</html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editing Service</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&display=swap');
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: white;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-bar {
+            height: 60px;
+            background: #f8f8f8;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .nav-item {
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-link {
+            color: #333;
+            text-decoration: none;
+            padding: 12px 20px;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 18px;
+        }
+
+        .nav-link:hover {
+            background-color: #333;
+            color: white;
+            border-color: #333;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border: 2px solid #333;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            min-width: 150px;
+            z-index: 1001;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            color: #333;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 120px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Home Section */
+        .home-section {
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .logo-container {
+            margin-bottom: 30px;
+        }
+
+        .logo-placeholder {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid #ddd;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f8f8;
+            font-size: 16px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        .tagline {
+            font-size: 24px;
+            font-weight: 300;
+            color: #333;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        .message-box {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            border: 2px solid #ddd;
+            border-radius: 15px;
+            background: #fafafa;
+            font-size: 16px;
+            color: #666;
+            text-align: center;
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+            padding: 40px 0;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            letter-spacing: 1px;
+        }
+
+        /* Thumbnails Grid */
+        .thumbnails-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .thumbnail-card {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .thumbnail-card:hover {
+            border-color: #333;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .thumbnail-placeholder {
+            width: 100%;
+            height: 200px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .thumbnail-info {
+            padding: 20px;
+        }
+
+        .thumbnail-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .thumbnail-type {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #333;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Reviews Section */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .review-card {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 30px;
+            background: #fafafa;
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            border-color: #333;
+            transform: translateY(-2px);
+        }
+
+        .review-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stars {
+            color: #ffa500;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* Prices Section */
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .pricing-card {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 40px 30px;
+            text-align: center;
+            background: white;
+            transition: all 0.3s ease;
+            min-width: 250px;
+        }
+
+        .pricing-card:hover {
+            border-color: #333;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .pricing-type {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pricing-amount {
+            font-size: 48px;
+            font-weight: 300;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            color: #555;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .about-content p {
+            margin-bottom: 25px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-bar {
+                flex-direction: column;
+                height: auto;
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .main-content {
+                margin-top: 160px;
+            }
+
+            .thumbnails-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <div class="header">
+        <div class="nav-container">
+            <div class="nav-bar">
+                <div class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('home')">Home</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('works')">Works</a>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item" onclick="showWorks('live')">Live Industry</a>
+                        <a href="#" class="dropdown-item" onclick="showWorks('gaming')">Gaming Sector</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('reviews')">Reviews</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('prices')">Prices</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('about')">About</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Home Section -->
+        <div id="home" class="content-section active">
+            <div class="home-section">
+                <div class="logo-container">
+                    <div class="logo-placeholder">
+                        YOUR LOGO HERE
+                    </div>
+                </div>
+                <div class="tagline">An Editing Service</div>
+                <div class="message-box">
+                    Your message content will go here. This is a placeholder for your custom message.
+                </div>
+            </div>
+        </div>
+
+        <!-- Works Section -->
+        <div id="works" class="content-section">
+            <h2 class="section-title">Our Works</h2>
+            
+            <!-- Live Industry Thumbnails -->
+            <div id="live-works" style="display: none;">
+                <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px; color: #666;">Live Industry</h3>
+                <div class="thumbnails-grid">
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Live Industry Thumbnail 1</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Corporate Event</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Live Industry Thumbnail 2</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Conference Coverage</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Live Industry Thumbnail 3</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Live Performance</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Live Industry Thumbnail 4</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Business Presentation</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Live Industry Thumbnail 5</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Product Launch</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Live Industry Thumbnail 6</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Webinar Series</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gaming Sector Thumbnails -->
+            <div id="gaming-works" style="display: none;">
+                <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px; color: #666;">Gaming Sector</h3>
+                <div class="thumbnails-grid">
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Gaming Thumbnail 1</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Action Game Trailer</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Gaming Thumbnail 2</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">RPG Cinematic</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Gaming Thumbnail 3</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Gameplay Montage</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Gaming Thumbnail 4</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Tournament Highlight</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Gaming Thumbnail 5</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Indie Game Showcase</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Gaming Thumbnail 6</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">VR Experience</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="works-default" style="text-align: center; padding: 60px 0; color: #666; font-size: 18px;">
+                Select a category from the Works dropdown menu to view our portfolio.
+            </div>
+        </div>
+
+        <!-- Reviews Section -->
+        <div id="reviews" class="content-section">
+            <h2 class="section-title">Client Reviews</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <div class="review-text">
+                        "Exceptional editing service! They transformed our corporate presentation into a professional masterpiece. The attention to detail and quick turnaround exceeded our expectations."
+                    </div>
+                    <div class="review-author">- Sarah Johnson, Marketing Director</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <div class="review-text">
+                        "Outstanding work on our gaming trailer! The team understood our vision perfectly and delivered a high-quality edit that captured the essence of our game. Highly recommended!"
+                    </div>
+                    <div class="review-author">- Mike Chen, Game Developer</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★☆</div>
+                    <div class="review-text">
+                        "Professional service with great communication throughout the process. The final product was exactly what we needed for our live event coverage. Will definitely use again."
+                    </div>
+                    <div class="review-author">- Emma Rodriguez, Event Coordinator</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <div class="review-text">
+                        "Incredible attention to detail and creative vision. They took our raw footage and created something truly spectacular. The premium package was worth every penny!"
+                    </div>
+                    <div class="review-author">- David Thompson, Content Creator</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prices Section -->
+        <div id="prices" class="content-section">
+            <h2 class="section-title">Our Pricing</h2>
+            <div class="pricing-container">
+                <div class="pricing-card">
+                    <div class="pricing-type">Standard</div>
+                    <div class="pricing-amount">$10</div>
+                    <ul class="pricing-features">
+                        <li>Basic Video Editing</li>
+                        <li>Color Correction</li>
+                        <li>Audio Enhancement</li>
+                        <li>Standard Transitions</li>
+                        <li>2-3 Day Delivery</li>
+                        <li>1 Revision Round</li>
+                    </ul>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-type">Premium</div>
+                    <div class="pricing-amount">$15</div>
+                    <ul class="pricing-features">
+                        <li>Advanced Video Editing</li>
+                        <li>Professional Color Grading</li>
+                        <li>Premium Audio Treatment</li>
+                        <li>Custom Effects & Transitions</li>
+                        <li>Motion Graphics</li>
+                        <li>1-2 Day Delivery</li>
+                        <li>3 Revision Rounds</li>
+                        <li>Priority Support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div id="about" class="content-section">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <p>
+                    Welcome to our professional editing service, where creativity meets precision. With years of experience in the industry, we specialize in delivering high-quality video editing solutions for both live industry events and gaming content.
+                </p>
+                <p>
+                    Our team of skilled editors combines technical expertise with artistic vision to transform raw footage into compelling visual stories. Whether you're looking to create corporate presentations, gaming trailers, or live event coverage, we have the tools and talent to bring your vision to life.
+                </p>
+                <p>
+                    We pride ourselves on our attention to detail, quick turnaround times, and commitment to client satisfaction. Our standard and premium packages are designed to meet diverse needs and budgets, ensuring that every project receives the care and professionalism it deserves.
+                </p>
+                <p>
+                    From color correction and audio enhancement to advanced motion graphics and custom effects, we utilize the latest technology and industry best practices to deliver results that exceed expectations. Trust us to make your content stand out in today's competitive digital landscape.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // If works section, show default message
+            if (sectionId === 'works') {
+                document.getElementById('live-works').style.display = 'none';
+                document.getElementById('gaming-works').style.display = 'none';
+                document.getElementById('works-default').style.display = 'block';
+            }
+        }
+
+        function showWorks(category) {
+            // Show works section
+            showSection('works');
+            
+            // Hide default message
+            document.getElementById('works-default').style.display = 'none';
+            
+            // Show selected category
+            if (category === 'live') {
+                document.getElementById('live-works').style.display = 'block';
+                document.getElementById('gaming-works').style.display = 'none';
+            } else if (category === 'gaming') {
+                document.getElementById('live-works').style.display = 'none';
+                document.getElementById('gaming-works').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
