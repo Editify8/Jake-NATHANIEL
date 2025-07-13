@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editify - Editing Service</title>
+    <title>Editing Service</title>
     <style>
         * {
             margin: 0;
@@ -11,12 +11,12 @@
             box-sizing: border-box;
         }
 
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&display=swap');
+
         body {
             font-family: 'Arial', sans-serif;
-            font-weight: 500;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #87ceeb 100%);
-            min-height: 100vh;
-            color: #000;
+            background-color: white;
+            color: #333;
             line-height: 1.6;
         }
 
@@ -26,9 +26,8 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(30, 60, 114, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(135, 206, 235, 0.3);
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
             z-index: 1000;
         }
 
@@ -40,23 +39,11 @@
 
         .nav-bar {
             height: 60px;
-            background: transparent;
+            background: white;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-        }
-
-        .brand-logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #87ceeb;
-            letter-spacing: 2px;
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 30px;
+            justify-content: center;
+            gap: 40px;
         }
 
         .nav-item {
@@ -65,37 +52,23 @@
         }
 
         .nav-link {
-            color: #87ceeb;
+            color: #333;
             text-decoration: none;
             padding: 12px 20px;
             border: 2px solid transparent;
             border-radius: 4px;
             transition: all 0.3s ease;
-            font-weight: 600;
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 16px;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 18px;
         }
 
         .nav-link:hover {
-            background-color: #2a5298;
+            background-color: #333;
             color: white;
-            border-color: #87ceeb;
-        }
-
-        /* Fix all text colors to be black */
-        h1, h2, h3, h4, h5, h6 {
-            color: #000;
-            font-weight: 600;
-        }
-
-        p {
-            color: #000;
-            font-weight: 500;
-        }
-
-        .content-section {
-            color: #000;
+            border-color: #333;
         }
 
         /* Dropdown Menu */
@@ -103,11 +76,10 @@
             position: absolute;
             top: 100%;
             left: 0;
-            background: rgba(30, 60, 114, 0.95);
-            backdrop-filter: blur(10px);
-            border: 2px solid #87ceeb;
+            background: white;
+            border: 2px solid #333;
             border-radius: 4px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             opacity: 0;
             visibility: hidden;
             transform: translateY(-10px);
@@ -124,12 +96,11 @@
 
         .dropdown-item {
             display: block;
-            color: #87ceeb;
+            color: #333;
             text-decoration: none;
             padding: 10px 16px;
-            border-bottom: 1px solid rgba(135, 206, 235, 0.3);
+            border-bottom: 1px solid #eee;
             transition: all 0.3s ease;
-            font-weight: 600;
         }
 
         .dropdown-item:last-child {
@@ -137,7 +108,7 @@
         }
 
         .dropdown-item:hover {
-            background-color: #2a5298;
+            background-color: #333;
             color: white;
         }
 
@@ -164,21 +135,21 @@
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            border: 3px solid #87ceeb;
+            border: 3px solid #ddd;
             margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(42, 82, 152, 0.3);
+            background: #f8f8f8;
             font-size: 16px;
-            color: #87ceeb;
-            font-weight: 600;
+            color: #666;
+            font-weight: bold;
         }
 
         .tagline {
             font-size: 24px;
-            font-weight: 600;
-            color: #000;
+            font-weight: 300;
+            color: #333;
             margin-bottom: 40px;
             letter-spacing: 2px;
         }
@@ -187,14 +158,12 @@
             max-width: 600px;
             margin: 0 auto;
             padding: 30px;
-            border: 2px solid #87ceeb;
+            border: 2px solid #ddd;
             border-radius: 15px;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
+            background: #fafafa;
             font-size: 16px;
-            color: #000;
+            color: #666;
             text-align: center;
-            font-weight: 500;
         }
 
         /* Content Sections */
@@ -209,10 +178,10 @@
 
         .section-title {
             font-size: 32px;
-            font-weight: 600;
+            font-weight: 300;
             text-align: center;
             margin-bottom: 40px;
-            color: #000;
+            color: #333;
             letter-spacing: 1px;
         }
 
@@ -225,18 +194,17 @@
         }
 
         .thumbnail-card {
-            border: 2px solid #87ceeb;
+            border: 2px solid #ddd;
             border-radius: 8px;
             overflow: hidden;
             transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
+            background: white;
         }
 
         .thumbnail-card:hover {
-            border-color: #87ceeb;
+            border-color: #333;
             transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(42, 82, 152, 0.4);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
 
         .thumbnail-placeholder {
@@ -248,7 +216,6 @@
             justify-content: center;
             color: #666;
             font-size: 14px;
-            font-weight: 500;
             border-bottom: 1px solid #eee;
         }
 
@@ -260,7 +227,7 @@
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 10px;
-            color: #000;
+            color: #333;
         }
 
         .thumbnail-type {
@@ -270,7 +237,7 @@
             color: white;
             border-radius: 20px;
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -284,26 +251,24 @@
         }
 
         .review-card {
-            border: 2px solid #87ceeb;
+            border: 2px solid #ddd;
             border-radius: 8px;
             padding: 30px;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
+            background: #fafafa;
             transition: all 0.3s ease;
         }
 
         .review-card:hover {
-            border-color: #87ceeb;
+            border-color: #333;
             transform: translateY(-2px);
         }
 
         .review-text {
             font-size: 16px;
             line-height: 1.6;
-            color: #000;
+            color: #555;
             margin-bottom: 20px;
             font-style: italic;
-            font-weight: 500;
         }
 
         .review-author {
@@ -330,25 +295,25 @@
         }
 
         .pricing-card {
-            border: 2px solid #87ceeb;
+            border: 2px solid #ddd;
             border-radius: 8px;
             padding: 40px 30px;
             text-align: center;
-            background: rgba(255, 255, 255, 0.9);
+            background: white;
             transition: all 0.3s ease;
             min-width: 250px;
         }
 
         .pricing-card:hover {
-            border-color: #2a5298;
+            border-color: #333;
             transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(42, 82, 152, 0.2);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
 
         .pricing-type {
             font-size: 24px;
             font-weight: 600;
-            color: #000;
+            color: #333;
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -356,8 +321,8 @@
 
         .pricing-amount {
             font-size: 48px;
-            font-weight: 600;
-            color: #000;
+            font-weight: 300;
+            color: #333;
             margin-bottom: 30px;
         }
 
@@ -368,9 +333,8 @@
 
         .pricing-features li {
             padding: 8px 0;
-            color: #000;
+            color: #555;
             border-bottom: 1px solid #eee;
-            font-weight: 500;
         }
 
         .pricing-features li:last-child {
@@ -383,16 +347,11 @@
             margin: 0 auto;
             font-size: 18px;
             line-height: 1.8;
-            color: #000;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 40px;
-            border-radius: 15px;
-            border: 2px solid #87ceeb;
+            color: #555;
         }
 
         .about-content p {
             margin-bottom: 25px;
-            font-weight: 500;
         }
 
         /* Responsive Design */
@@ -402,10 +361,6 @@
                 height: auto;
                 gap: 10px;
                 padding: 10px;
-            }
-
-            .nav-menu {
-                gap: 15px;
             }
 
             .main-content {
@@ -420,33 +375,6 @@
                 flex-direction: column;
                 align-items: center;
             }
-
-            .brand-logo {
-                font-size: 20px;
-            }
-
-            .nav-link {
-                font-size: 14px;
-                padding: 8px 15px;
-            }
-        }
-
-        /* Category headers */
-        .category-header {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 24px;
-            color: #000;
-            font-weight: 600;
-        }
-
-        /* Default works message */
-        .works-default {
-            text-align: center;
-            padding: 60px 0;
-            color: #000;
-            font-size: 18px;
-            font-weight: 500;
         }
     </style>
 </head>
@@ -455,27 +383,24 @@
     <div class="header">
         <div class="nav-container">
             <div class="nav-bar">
-                <div class="brand-logo">EDITIFY</div>
-                <div class="nav-menu">
-                    <div class="nav-item">
-                        <a href="#" class="nav-link" onclick="showSection('home')">Home</a>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('home')">Home</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('works')">Works</a>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item" onclick="showWorks('live')">Live Industry</a>
+                        <a href="#" class="dropdown-item" onclick="showWorks('gaming')">Gaming Sector</a>
                     </div>
-                    <div class="nav-item">
-                        <a href="#" class="nav-link" onclick="showSection('works')">Works</a>
-                        <div class="dropdown">
-                            <a href="#" class="dropdown-item" onclick="showWorks('live')">Live Industry</a>
-                            <a href="#" class="dropdown-item" onclick="showWorks('gaming')">Gaming Sector</a>
-                        </div>
-                    </div>
-                    <div class="nav-item">
-                        <a href="#" class="nav-link" onclick="showSection('reviews')">Reviews</a>
-                    </div>
-                    <div class="nav-item">
-                        <a href="#" class="nav-link" onclick="showSection('prices')">Prices</a>
-                    </div>
-                    <div class="nav-item">
-                        <a href="#" class="nav-link" onclick="showSection('about')">About</a>
-                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('reviews')">Reviews</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('prices')">Prices</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('about')">About</a>
                 </div>
             </div>
         </div>
@@ -504,7 +429,7 @@
             
             <!-- Live Industry Thumbnails -->
             <div id="live-works" style="display: none;">
-                <h3 class="category-header">Live Industry</h3>
+                <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px; color: #666;">Live Industry</h3>
                 <div class="thumbnails-grid">
                     <div class="thumbnail-card">
                         <div class="thumbnail-placeholder">Live Industry Thumbnail 1</div>
@@ -553,7 +478,7 @@
 
             <!-- Gaming Sector Thumbnails -->
             <div id="gaming-works" style="display: none;">
-                <h3 class="category-header">Gaming Sector</h3>
+                <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px; color: #666;">Gaming Sector</h3>
                 <div class="thumbnails-grid">
                     <div class="thumbnail-card">
                         <div class="thumbnail-placeholder">Gaming Thumbnail 1</div>
@@ -600,7 +525,7 @@
                 </div>
             </div>
 
-            <div id="works-default" class="works-default">
+            <div id="works-default" style="text-align: center; padding: 60px 0; color: #666; font-size: 18px;">
                 Select a category from the Works dropdown menu to view our portfolio.
             </div>
         </div>
