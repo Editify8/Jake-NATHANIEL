@@ -35,6 +35,30 @@
             z-index: 1000;
         }
 
+         .top-left-logo {
+     position: fixed;
+     top: 15px;
+     left: 20px;
+     width: 60px; /* make width and height equal */
+     height: 60px;
+     background: rgba(255, 255, 255, 0.9);
+     border-radius: 50%; /* this makes it a circle */
+     border: 2px solid #ddd;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     z-index: 1001;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+        .top-left-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -48,6 +72,7 @@
             align-items: center;
             justify-content: center;
             gap: 40px;
+            padding-left: 160px;
         }
 
         .nav-item {
@@ -123,6 +148,11 @@
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        /* Offset sections */
+        .offset-section {
+            margin-left: 160px;
         }
 
         /* Home Section */
@@ -386,10 +416,30 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .top-left-logo {
+                width: 80px;
+                height: 25px;
+                top: 17px;
+                left: 10px;
+            }
+
+            .nav-bar {
+                padding-left: 0;
+            }
+
+            .offset-section {
+                margin-left: 0;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Top Left Logo -->
+    <div class="top-left-logo">
+        <img src="logo.jpg" alt="Top Logo" />
+    </div>
+
     <!-- Header Navigation -->
     <div class="header">
         <div class="nav-container">
@@ -420,7 +470,7 @@
     <!-- Main Content -->
     <div class="main-content">
         <!-- Home Section -->
-        <div id="home" class="content-section active">
+        <div id="home" class="content-section active offset-section">
             <div class="home-section">
                 <div class="logo-container">
                     <div class="logo-placeholder">
@@ -542,7 +592,7 @@
         </div>
 
         <!-- Reviews Section -->
-        <div id="reviews" class="content-section">
+        <div id="reviews" class="content-section offset-section">
             <h2 class="section-title">Client Reviews</h2>
             <div class="reviews-grid">
                 <div class="review-card">
