@@ -196,18 +196,6 @@
             letter-spacing: 2px;
         }
 
-        .message-box {
-            max-width: 1000px; /* Increased from 600px */
-            margin: 0 auto;
-            padding: 30px;
-            border: 2px solid #ddd;
-            border-radius: 15px;
-            background: #fafafa;
-            font-size: 16px;
-            color: #666;
-            text-align: center;
-        }
-
         /* Content Sections */
         .content-section {
             display: none;
@@ -383,7 +371,7 @@
             border-bottom: none;
         }
 
-        /*  Section */
+        /* About Section */
         .about-content {
             max-width: 800px;
             margin: 0 auto;
@@ -402,16 +390,20 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 25px;
             margin-top: 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .feature-card {
-            background: #1e1e1e;
-            border-radius: 20px; /* More rounded edges */
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 20px;
             padding: 30px 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            color: #f0f0f0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            aspect-ratio: 1; /* Makes it square */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            color: #333;
+            transition: all 0.3s ease;
+            aspect-ratio: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -421,18 +413,29 @@
         .feature-card h3 {
             margin-bottom: 15px;
             font-size: 18px;
-            color: #ffffff;
+            color: #333;
         }
 
         .feature-card p {
             font-size: 14px;
             line-height: 1.6;
-            color: #ccc;
+            color: #555;
         }
 
         .feature-card:hover {
+            background: #333;
+            color: white;
+            border-color: #333;
             transform: translateY(-5px);
-            box-shadow: 0 6px 25px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card:hover h3 {
+            color: white;
+        }
+
+        .feature-card:hover p {
+            color: #f0f0f0;
         }
 
         /* Responsive Design */
@@ -475,11 +478,6 @@
             /* Make features responsive - 1 column on mobile */
             .features-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .message-box {
-                max-width: 100%;
-                padding: 20px;
             }
         }
 
@@ -535,52 +533,51 @@
                     </div>
                 </div>
                 <div class="tagline">An Editing Service</div>
-                <div class="message-box">
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <h3>⚡ Fast Turnaround</h3>
-                            <p>Get your projects delivered quickly — whether it's a video edit, animation, banner, or thumbnail. We prioritize speed without compromising quality.</p>
-                        </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>⚡ Fast Turnaround</h3>
+                        <p>Get your projects delivered quickly — whether it's a video edit, animation, banner, or thumbnail. We prioritize speed without compromising quality.</p>
+                    </div>
 
-                        <div class="feature-card">
-                            <h3>💰 Best Price Guarantee</h3>
-                            <p>We offer premium creative services at unbeatable prices. You get the best value across editing, design, and animation.</p>
-                        </div>
+                    <div class="feature-card">
+                        <h3>💰 Best Price Guarantee</h3>
+                        <p>We offer premium creative services at unbeatable prices. You get the best value across editing, design, and animation.</p>
+                    </div>
 
-                        <div class="feature-card">
-                            <h3>👨‍💻 Top-Tier Creatives</h3>
-                            <p>Our team includes editors, designers, and animators who've worked with well over 100 clients, ensuring top-quality results every time.</p>
-                        </div>
+                    <div class="feature-card">
+                        <h3>👨‍💻 Top-Tier Creatives</h3>
+                        <p>Our team includes editors, designers, and animators who've worked with well over 100 clients, ensuring top-quality results every time.</p>
+                    </div>
 
-                        <div class="feature-card">
-                            <h3>♻ Unlimited Revisions</h3>
-                            <p>We're not done until you're happy. Enjoy unlimited fair revisions to perfect your project without extra charges.</p>
-                        </div>
+                    <div class="feature-card">
+                        <h3>♻ Unlimited Revisions</h3>
+                        <p>We're not done until you're happy. Enjoy unlimited fair revisions to perfect your project without extra charges.</p>
+                    </div>
 
-                        <div class="feature-card">
-                            <h3>🔁 1–2 Revisions on Standard Plans</h3>
-                            <p>Need minor tweaks? Our basic plans come with 1–2 free revision rounds for quick refinements and polish.</p>
-                        </div>
+                    <div class="feature-card">
+                        <h3>🔁 1–2 Revisions on Standard Plans</h3>
+                        <p>Need minor tweaks? Our basic plans come with 1–2 free revision rounds for quick refinements and polish.</p>
+                    </div>
 
-                        <div class="feature-card">
-                            <h3>🧠 Niche-Specific Expertise</h3>
-                            <p>From Minecraft content to corporate reels, stream overlays to animated logos — we assign specialists based on your niche.</p>
-                        </div>
+                    <div class="feature-card">
+                        <h3>🧠 Niche-Specific Expertise</h3>
+                        <p>From Minecraft content to corporate reels, stream overlays to animated logos — we assign specialists based on your niche.</p>
+                    </div>
 
-                        <div class="feature-card">
-                            <h3>📊 Quality Control & Feedback</h3>
-                            <p>Each deliverable goes through a strict review process to maintain quality. We also offer feedback and optimization tips.</p>
-                        </div>
+                    <div class="feature-card">
+                        <h3>📊 Quality Control & Feedback</h3>
+                        <p>Each deliverable goes through a strict review process to maintain quality. We also offer feedback and optimization tips.</p>
+                    </div>
 
-                        <div class="feature-card">
-                            <h3>🎯 Personalized Approach</h3>
-                            <p>Your brand is unique — so is our work. Every asset is custom-made to fit your style, audience, and goals.</p>
-                        </div>
+                    <div class="feature-card">
+                        <h3>🎯 Personalized Approach</h3>
+                        <p>Your brand is unique — so is our work. Every asset is custom-made to fit your style, audience, and goals.</p>
+                    </div>
 
-                        <div class="feature-card">
-                            <h3>🧩 All-in-One Creative Services</h3>
-                            <p>Video editing, animations, thumbnails, banners, overlays, and more — all under one roof, all by one reliable team.</p>
-                        </div>
+                    <div class="feature-card">
+                        <h3>🧩 All-in-One Creative Services</h3>
+                        <p>Video editing, animations, thumbnails, banners, overlays, and more — all under one roof, all by one reliable team.</p>
                     </div>
                 </div>
             </div>
