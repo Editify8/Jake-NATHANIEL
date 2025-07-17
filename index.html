@@ -197,7 +197,7 @@
         }
 
         .message-box {
-            max-width: 600px;
+            max-width: 1000px; /* Increased from 600px */
             margin: 0 auto;
             padding: 30px;
             border: 2px solid #ddd;
@@ -395,17 +395,31 @@
         .about-content p {
             margin-bottom: 25px;
         }
+
+        /* Updated Features Grid - 3 columns, square with rounded edges */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
         .feature-card {
             background: #1e1e1e;
-            border-radius: 15px;
-            padding: 20px;
+            border-radius: 20px; /* More rounded edges */
+            padding: 30px 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             color: #f0f0f0;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            aspect-ratio: 1; /* Makes it square */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
         }
 
         .feature-card h3 {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-size: 18px;
             color: #ffffff;
         }
@@ -416,10 +430,9 @@
             color: #ccc;
         }
 
-
         .feature-card:hover {
-              transform: translateY(-5px);
-              box-shadow: 0 6px 25px rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(255, 255, 255, 0.1);
         }
 
         /* Responsive Design */
@@ -457,6 +470,23 @@
 
             .offset-section {
                 margin-left: 0;
+            }
+
+            /* Make features responsive - 1 column on mobile */
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .message-box {
+                max-width: 100%;
+                padding: 20px;
+            }
+        }
+
+        /* Tablet responsive - 2 columns */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -505,8 +535,8 @@
                     </div>
                 </div>
                 <div class="tagline">An Editing Service</div>
-                  <div class="message-box">
-                     <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px;">
+                <div class="message-box">
+                    <div class="features-grid">
                         <div class="feature-card">
                             <h3>⚡ Fast Turnaround</h3>
                             <p>Get your projects delivered quickly — whether it's a video edit, animation, banner, or thumbnail. We prioritize speed without compromising quality.</p>
@@ -519,12 +549,12 @@
 
                         <div class="feature-card">
                             <h3>👨‍💻 Top-Tier Creatives</h3>
-                            <p>Our team includes editors, designers, and animators who’ve worked with well over 100 clients, ensuring top-quality results every time.</p>
+                            <p>Our team includes editors, designers, and animators who've worked with well over 100 clients, ensuring top-quality results every time.</p>
                         </div>
 
                         <div class="feature-card">
                             <h3>♻ Unlimited Revisions</h3>
-                            <p>We’re not done until you’re happy. Enjoy unlimited fair revisions to perfect your project without extra charges.</p>
+                            <p>We're not done until you're happy. Enjoy unlimited fair revisions to perfect your project without extra charges.</p>
                         </div>
 
                         <div class="feature-card">
@@ -538,8 +568,8 @@
                         </div>
 
                         <div class="feature-card">
-                               <h3>📊 Quality Control & Feedback</h3>
-                               <p>Each deliverable goes through a strict review process to maintain quality. We also offer feedback and optimization tips.</p>
+                            <h3>📊 Quality Control & Feedback</h3>
+                            <p>Each deliverable goes through a strict review process to maintain quality. We also offer feedback and optimization tips.</p>
                         </div>
 
                         <div class="feature-card">
@@ -548,8 +578,8 @@
                         </div>
 
                         <div class="feature-card">
-                          <h3>🧩 All-in-One Creative Services</h3>
-                          <p>Video editing, animations, thumbnails, banners, overlays, and more — all under one roof, all by one reliable team.</p>
+                            <h3>🧩 All-in-One Creative Services</h3>
+                            <p>Video editing, animations, thumbnails, banners, overlays, and more — all under one roof, all by one reliable team.</p>
                         </div>
                     </div>
                 </div>
@@ -677,17 +707,17 @@
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
                     <div class="review-text">
-                        "Editing service “Editify” was one of the finest teams I have worked with. Their assistance was instrumental in expanding my Discord server to 2.5k members, for which Im quite grateful. Their pricing was fair, and the quality was amazing! Be sure to check them out on Discord!"
+                        "Editing service "Editify" was one of the finest teams I have worked with. Their assistance was instrumental in expanding my Discord server to 2.5k members, for which Im quite grateful. Their pricing was fair, and the quality was amazing! Be sure to check them out on Discord!"
                     </div>
                     <div class="review-author">- JxckeMC, Champions MC </div>
                 </div>
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
                     <div class="review-text">
-                        "We run a bouquet service and wanted a nice little video to show what we do. Editify really helped us bring it to life. The way they edited the clips, added smooth transitions, and matched the music — it just felt right. They were easy to talk to, understood what we needed, and made sure everything looked beautiful. We’re super happy with how it turned out!
+                        "We run a bouquet service and wanted a nice little video to show what we do. Editify really helped us bring it to life. The way they edited the clips, added smooth transitions, and matched the music — it just felt right. They were easy to talk to, understood what we needed, and made sure everything looked beautiful. We're super happy with how it turned out!
 "
                     </div>
-                    <div class="review-author"> -  Bloomsart.tcr</div>
+                    <div class="review-author"> -  Bloomsart.tcr</div>
                 </div>
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
@@ -774,9 +804,6 @@
                   </div>
               </div>
           </div>
-
-
-
 
         </div>
     </div>
