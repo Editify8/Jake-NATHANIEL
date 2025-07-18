@@ -973,41 +973,56 @@
         </div>
     </div>
 
-    <script>
-        function showSection(sectionId) {
-            // Hide all sections
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Show selected section
-            document.getElementById(sectionId).classList.add('active');
-            
-            // If works section, show default message
-            if (sectionId === 'works') {
-                document.getElementById('live-works').style.display = 'none';
-                document.getElementById('gaming-works').style.display = 'none';
-                document.getElementById('works-default').style.display = 'block';
-            }
-        }
+<script>
+    function showSection(sectionId) {
+        // Hide all main content sections
+        const sections = document.querySelectorAll('.content-section');
+        sections.forEach(section => {
+            section.classList.remove('active');
+        });
 
-        function showWorks(category) {
-            // Show works section
-            showSection('works');
-            
-            // Hide default message
-            document.getElementById('works-default').style.display = 'none';
-            
-            // Show selected category
-            if (category === 'live') {
-                document.getElementById('live-works').style.display = 'block';
-                document.getElementById('gaming-works').style.display = 'none';
-            } else if (category === 'gaming') {
-                document.getElementById('live-works').style.display = 'none';
-                document.getElementById('gaming-works').style.display = 'block';
-            }
+        // Show selected main section
+        document.getElementById(sectionId).classList.add('active');
+
+        // If "Works" section, reset sub-sections
+        if (sectionId === 'works') {
+            const workSubSections = [
+                'live-art', 'live-video',
+                'gaming-art', 'gaming-video'
+            ];
+            workSubSections.forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+            document.getElementById('works-default').style.display = 'block';
         }
-    </script>
+    }
+
+    function showWorks(category) {
+        // Show Works section
+        showSection('works');
+
+        // Hide default message
+        document.getElementById('works-default').style.display = 'none';
+
+        // Hide all sub-sections first
+        const workSubSections = [
+            'live-art', 'live-video',
+            'gaming-art', 'gaming-video'
+        ];
+        workSubSections.forEach(id => {
+            document.getElementById(id).style.display = 'none';
+        });
+
+        // Show selected sub-sections
+        if (category === 'live') {
+            document.getElementById('live-art').style.display = 'block';
+            document.getElementById('live-video').style.display = 'block';
+        } else if (category === 'gaming') {
+            document.getElementById('gaming-art').style.display = 'block';
+            document.getElementById('gaming-video').style.display = 'block';
+        }
+    }
+</script>
+
 </body>
 </html>
