@@ -51,7 +51,6 @@
      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-
         .top-left-logo img {
           width: 100%;
           height: 100%;
@@ -59,6 +58,46 @@
           border-radius: 50%;    /* ensures circular shape */
           display: block;        /* removes any extra spacing */
 }
+
+        /* Social Icons */
+        .social-icons {
+            position: fixed;
+            top: 15px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+            z-index: 1001;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-icon:hover {
+            background: #333;
+            border-color: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-icon img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .social-icon:hover img {
+            filter: brightness(0) invert(1);
+        }
 
         .nav-container {
             max-width: 1200px;
@@ -74,6 +113,7 @@
             justify-content: center;
             gap: 40px;
             padding-left: 160px;
+            padding-right: 160px;
         }
 
         .nav-item {
@@ -156,7 +196,7 @@
             visibility: hidden;
             transform: translateX(-10px);
             transition: all 0.3s ease;
-            min-width: 150px;
+            min-width: 180px;
             z-index: 1002;
         }
 
@@ -366,60 +406,74 @@
             margin-bottom: 10px;
         }
 
-        /* Prices Section */
+        /* Updated Pricing Section - 4 Service Boxes */
         .pricing-container {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
             margin-top: 40px;
-            flex-wrap: wrap;
         }
 
         .pricing-card {
             border: 2px solid #ddd;
-            border-radius: 8px;
-            padding: 40px 30px;
+            border-radius: 12px;
+            padding: 30px 25px;
             text-align: center;
             background: white;
             transition: all 0.3s ease;
-            min-width: 250px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .pricing-card:hover {
             border-color: #333;
             transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
         .pricing-type {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 600;
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .pricing-amount {
-            font-size: 48px;
+            font-size: 36px;
             font-weight: 300;
             color: #333;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .pricing-features {
             list-style: none;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            text-align: left;
         }
 
         .pricing-features li {
             padding: 8px 0;
             color: #555;
             border-bottom: 1px solid #eee;
+            font-size: 14px;
+            line-height: 1.4;
         }
 
         .pricing-features li:last-child {
             border-bottom: none;
+        }
+
+        .pricing-features li:before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .pricing-features li.negative:before {
+            content: "✗ ";
+            color: #dc3545;
         }
 
         /* About Section */
@@ -507,19 +561,24 @@
             }
 
             .pricing-container {
-                flex-direction: column;
-                align-items: center;
+                grid-template-columns: 1fr;
+            }
+
+            .social-icons {
+                top: 80px;
+                right: 10px;
             }
 
             .top-left-logo {
-                width: 80px;
-                height: 25px;
-                top: 17px;
+                width: 50px;
+                height: 50px;
+                top: 10px;
                 left: 10px;
             }
 
             .nav-bar {
                 padding-left: 0;
+                padding-right: 0;
             }
 
             .offset-section {
@@ -548,6 +607,10 @@
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .pricing-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -555,6 +618,16 @@
     <!-- Top Left Logo -->
     <div class="top-left-logo">
         <img src="top_logo.jpg" alt="Top Logo" />
+    </div>
+
+    <!-- Social Icons -->
+    <div class="social-icons">
+        <a href="https://youtube.com/@editify-n1o?si=Z2irWdP4srR9E4tg" target="_blank" class="social-icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+        </a>
+        <a href="https://discord.gg/dvps2FDx96" target="_blank" class="social-icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
+        </a>
     </div>
 
     <!-- Header Navigation -->
@@ -569,12 +642,12 @@
                     <div class="dropdown">
                         <a href="#" class="dropdown-item has-submenu">Live Industry</a>
                         <div class="sub-dropdown">
-                            <a href="#" class="sub-dropdown-item" onclick="showWorks('live', 'art')">Art</a>
+                            <a href="#" class="sub-dropdown-item" onclick="showWorks('live', 'thumbnails')">Thumbnails</a>
                             <a href="#" class="sub-dropdown-item" onclick="showWorks('live', 'video')">Video Editing</a>
                         </div>
                         <a href="#" class="dropdown-item has-submenu">Gaming Sector</a>
                         <div class="sub-dropdown">
-                            <a href="#" class="sub-dropdown-item" onclick="showWorks('gaming', 'art')">Art</a>
+                            <a href="#" class="sub-dropdown-item" onclick="showWorks('gaming', 'thumbnails')">Thumbnails</a>
                             <a href="#" class="sub-dropdown-item" onclick="showWorks('gaming', 'video')">Video Editing</a>
                         </div>
                     </div>
@@ -657,9 +730,9 @@
         <div id="works" class="content-section">
             <h2 class="section-title">Our Works</h2>
             
-            <!-- Live Industry Art -->
-            <div id="live-art" style="display: none;">
-                <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px; color: #666;">Live Industry - Art</h3>
+            <!-- Live Industry Thumbnails -->
+            <div id="live-thumbnails" style="display: none;">
+                <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px; color: #666;">Live Industry - Thumbnails</h3>
                 <div class="thumbnails-grid">
                     <div class="thumbnail-card">
                         <div class="thumbnail-placeholder">Corporate Logo Design</div>
@@ -755,9 +828,9 @@
                 </div>
             </div>
 
-            <!-- Gaming Art -->
-            <div id="gaming-art" style="display: none;">
-                <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px; color: #666;">Gaming Sector - Art</h3>
+            <!-- Gaming Thumbnails -->
+            <div id="gaming-thumbnails" style="display: none;">
+                <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px; color: #666;">Gaming Sector - Thumbnails</h3>
                 <div class="thumbnails-grid">
                     <div class="thumbnail-card">
                         <div class="thumbnail-placeholder">Gaming Logo Design</div>
@@ -817,212 +890,148 @@
                     </div>
                     <div class="thumbnail-card">
                         <div class="thumbnail-placeholder">Game Trailer</div>
-                        <div class="thumbnail-info">
-                            <div class="thumbnail-title">Indie Game Showcase</div>
+                                                <div class="thumbnail-info">
+                            <div class="thumbnail-title">Game Teaser Showcase</div>
                             <span class="thumbnail-type">Premium</span>
                         </div>
                     </div>
                     <div class="thumbnail-card">
-                        <div class="thumbnail-placeholder">Stream Highlights</div>
+                        <div class="thumbnail-placeholder">Funny Edits</div>
                         <div class="thumbnail-info">
-                            <div class="thumbnail-title">Twitch Best Moments</div>
+                            <div class="thumbnail-title">Stream Meme Compilations</div>
                             <span class="thumbnail-type">Standard</span>
                         </div>
                     </div>
                     <div class="thumbnail-card">
-                        <div class="thumbnail-placeholder">Tournament Recap</div>
+                        <div class="thumbnail-placeholder">Stream Recap</div>
                         <div class="thumbnail-info">
-                            <div class="thumbnail-title">Esports Championship</div>
-                            <span class="thumbnail-type">Premium</span>
-                        </div>
-                    </div>
-                    <div class="thumbnail-card">
-                        <div class="thumbnail-placeholder">Gaming Tutorial</div>
-                        <div class="thumbnail-info">
-                            <div class="thumbnail-title">How-to Guide Video</div>
-                            <span class="thumbnail-type">Standard</span>
-                        </div>
-                    </div>
-                    <div class="thumbnail-card">
-                        <div class="thumbnail-placeholder">Game Review</div>
-                        <div class="thumbnail-info">
-                            <div class="thumbnail-title">Critical Analysis Video</div>
+                            <div class="thumbnail-title">Best of the Stream</div>
                             <span class="thumbnail-type">Standard</span>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div id="works-default" style="text-align: center; padding: 60px 0; color: #666; font-size: 18px;">
-                Select a category from the Works dropdown menu to view our portfolio.
             </div>
         </div>
 
         <!-- Reviews Section -->
-        <div id="reviews" class="content-section offset-section">
+        <div id="reviews" class="content-section">
             <h2 class="section-title">Client Reviews</h2>
             <div class="reviews-grid">
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
-                    <div class="review-text">
-                        "As the founder of aspire smp,Editify has helped us a lot in our journey and helped us gain a lot of members,One of the videos they made got around 120k views and helped us to gain around 3k members.l'd definitely reccomend it for the upcoming new servers..."
-                    </div>
-                    <div class="review-author">- KillerMC, Aspire smp </div>
+                    <div class="review-text">Absolutely amazing work! My videos came out perfect and the delivery was fast.</div>
+                    <div class="review-author">- Alex (YouTube Creator)</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★☆</div>
+                    <div class="review-text">Great thumbnails and overall value. Will order again!</div>
+                    <div class="review-author">- Priya (Streamer)</div>
                 </div>
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
-                    <div class="review-text">
-                        "Editing service "Editify" was one of the finest teams I have worked with. Their assistance was instrumental in expanding my Discord server to 2.5k members, for which Im quite grateful. Their pricing was fair, and the quality was amazing! Be sure to check them out on Discord!"
-                    </div>
-                    <div class="review-author">- JxckeMC, Champions MC </div>
-                </div>
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <div class="review-text">
-                        "We run a bouquet service and wanted a nice little video to show what we do. Editify really helped us bring it to life. The way they edited the clips, added smooth transitions, and matched the music — it just felt right. They were easy to talk to, understood what we needed, and made sure everything looked beautiful. We're super happy with how it turned out!
-"
-                    </div>
-                    <div class="review-author"> -  Bloomsart.tcr</div>
-                </div>
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <div class="review-text">
-                        "Incredible attention to detail and creative vision. They took our raw footage and created something truly spectacular. The premium package was worth every penny!"
-                    </div>
-                    <div class="review-author">- jeron e.j, muscle man</div>
+                    <div class="review-text">Highly recommend for professional video editing. They fixed every revision I asked for.</div>
+                    <div class="review-author">- Sam (Event Organizer)</div>
                 </div>
             </div>
         </div>
 
-        <!-- Prices Section -->
+        <!-- Pricing Section -->
         <div id="prices" class="content-section">
-            <h2 class="section-title">Our Pricing</h2>
+            <h2 class="section-title">Pricing Plans</h2>
             <div class="pricing-container">
+                <!-- Standard Art -->
                 <div class="pricing-card">
-                    <div class="pricing-type">Standard</div>
+                    <div class="pricing-type">🖼 Standard Art</div>
                     <div class="pricing-amount">$10</div>
                     <ul class="pricing-features">
-                        <li>Basic Video Editing</li>
-                        <li>Color Correction</li>
-                        <li>Audio Enhancement</li>
-                        <li>Standard Transitions</li>
-                        <li>2-3 Day Delivery</li>
-                        <li>1 Revision Round</li>
+                        <li>1 Revision (any 1 change)</li>
+                        <li>1–4 Day Delivery</li>
+                        <li>Unlimited Reasonable Revisions</li>
+                        <li>Direct Implementation</li>
                     </ul>
                 </div>
+                <!-- Premium Art -->
                 <div class="pricing-card">
-                    <div class="pricing-type">Premium</div>
+                    <div class="pricing-type">🖌 Premium Art</div>
                     <div class="pricing-amount">$15</div>
                     <ul class="pricing-features">
-                        <li>Advanced Video Editing</li>
-                        <li>Professional Color Grading</li>
-                        <li>Premium Audio Treatment</li>
-                        <li>Custom Effects & Transitions</li>
-                        <li>Motion Graphics</li>
-                        <li>1-2 Day Delivery</li>
-                        <li>3 Revision Rounds</li>
-                        <li>Priority Support</li>
+                        <li>3 Revisions (any 3 changes)</li>
+                        <li>Unlimited Reasonable Revisions</li>
+                        <li>1–2 Day Delivery</li>
+                        <li>Creator Input Implementation</li>
+                        <li>Quality Checked by Experts</li>
+                    </ul>
+                </div>
+                <!-- Standard Video -->
+                <div class="pricing-card">
+                    <div class="pricing-type">🎬 Standard Video Editing</div>
+                    <div class="pricing-amount">$20</div>
+                    <ul class="pricing-features">
+                        <li>2 min basic OR 10 min low-edit</li>
+                        <li>Variable Pricing (custom)</li>
+                        <li>2 Revisions</li>
+                        <li>No Formal QA</li>
+                        <li>Unlimited Reasonable Revisions</li>
+                        <li>Reassignment if unsatisfactory</li>
+                    </ul>
+                </div>
+                <!-- Premium Video -->
+                <div class="pricing-card">
+                    <div class="pricing-type">🎥 Premium Video Editing</div>
+                    <div class="pricing-amount">$40</div>
+                    <ul class="pricing-features">
+                        <li>10 min high-quality edit</li>
+                        <li>Variable Pricing (custom)</li>
+                        <li>4 Revisions</li>
+                        <li>Multiple QA Checks</li>
+                        <li>Unlimited Reasonable Revisions</li>
+                        <li>Reassignment If Not Approved</li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <!-- About Section -->
-      
-             <!-- About Section -->
-          <div id="about" class="content-section offset-section">
-              <div class="about-content">
-                  <p style="font-size: 22px;">🎬 <strong>Welcome to Editify – Elevate Your Content & Community</strong></p>
-                  <p>
-                      Editify delivers high-quality video editing and Discord server promotion services, crafted for content creators, streamers, and community leaders.
-                  </p>
-
-                  <p style="font-size: 20px;"><strong>💼 What We Offer</strong></p>
-                  <ul style="padding-left: 20px;">
-                      <li><strong>Professional Video Editing</strong> – YouTube, Reels, TikToks, transitions, captions & more</li>
-                      <li><strong>Thumbnail Design</strong> – Fixed, affordable pricing on all thumbnails</li>
-                      <li><strong>Discord Promotion</strong> – Optional exposure through trusted partner communities</li>
-                  </ul>
-
-        <!-- Added spacing before How It Works -->
-                  <div style="height: 30px;"></div>
-
-                  <p style="font-size: 20px;"><strong>🚀 How It Works</strong></p>
-                  <ol style="padding-left: 20px;">
-                      <li><strong>Choose a Package</strong> – From quick edits to full content bundles</li>
-                      <li><strong>Submit Your Content</strong> – Easily upload files through our ticket system</li>
-                      <li><strong>Get Your Delivery</strong> – Fast turnaround, revisions included, ready to post or promote</li>
-                  </ol>
-
-                  <blockquote style="margin-top: 20px; font-style: italic; color: #444;">
-                      &gt; Need something custom? We offer flexible, quote-based pricing for all services—except thumbnails, which have fixed rates.
-                  </blockquote>
-
-        <!-- Social icons -->
-                  <div style="margin-top: 40px; text-align: center;">
-                      <a href="https://youtube.com/@editify-n1o?si=Z2irWdP4srR9E4tg" target="_blank" style="margin: 0 15px;">
-                          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" width="40" height="40">
-                      </a>
-                      <a href="https://discord.gg/dvps2FDx96" target="_blank" style="margin: 0 15px;">
-                          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" width="40" height="40">
-                      </a>
-                  </div>
-              </div>
-          </div>
-
+        <div id="about" class="content-section">
+            <h2 class="section-title">About Editify</h2>
+            <div class="about-content">
+                <p>At Editify, we specialize in delivering top-notch editing services tailored to both content creators and corporate clients. Our experience spans a wide range of industries, with dedicated specialists for every type of creative work — from YouTube thumbnails to professional reels.</p>
+                <p>We believe in fast delivery, affordable pricing, and unmatched quality. Every project is handled by a professional, reviewed for quality, and customized to match your unique vision.</p>
+                <p>Whether you’re a streamer, brand, or business owner — Editify is your go-to partner for creative content that stands out.</p>
+            </div>
         </div>
     </div>
 
-<script>
-    function showSection(sectionId) {
-        // Hide all main content sections
-        const sections = document.querySelectorAll('.content-section');
-        sections.forEach(section => {
-            section.classList.remove('active');
-        });
+    <!-- Footer Icons -->
+    <footer style="text-align: center; padding: 40px 0; background-color: rgba(255,255,255,0.8); margin-top: 60px;">
+        <div style="display: flex; justify-content: center; gap: 20px;">
+            <a href="https://youtube.com/@editify-n1o?si=Z2irWdP4srR9E4tg" target="_blank" class="social-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+            </a>
+            <a href="https://discord.gg/dvps2FDx96" target="_blank" class="social-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
+            </a>
+        </div>
+        <p style="margin-top: 20px; font-size: 14px; color: #777;">© 2025 Editify. All rights reserved.</p>
+    </footer>
 
-        // Show selected main section
-        document.getElementById(sectionId).classList.add('active');
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+        }
 
-        // If "Works" section, reset sub-sections
-        if (sectionId === 'works') {
-            const workSubSections = [
-                'live-art', 'live-video',
-                'gaming-art', 'gaming-video'
+        function showWorks(category, type) {
+            const ids = [
+                'live-thumbnails', 'live-video',
+                'gaming-thumbnails', 'gaming-video'
             ];
-            workSubSections.forEach(id => {
-                document.getElementById(id).style.display = 'none';
-            });
-            document.getElementById('works-default').style.display = 'block';
+
+            ids.forEach(id => document.getElementById(id).style.display = 'none');
+
+            document.getElementById(category + '-' + type).style.display = 'block';
         }
-    }
-
-    function showWorks(category) {
-        // Show Works section
-        showSection('works');
-
-        // Hide default message
-        document.getElementById('works-default').style.display = 'none';
-
-        // Hide all sub-sections first
-        const workSubSections = [
-            'live-art', 'live-video',
-            'gaming-art', 'gaming-video'
-        ];
-        workSubSections.forEach(id => {
-            document.getElementById(id).style.display = 'none';
-        });
-
-        // Show selected sub-sections
-        if (category === 'live') {
-            document.getElementById('live-art').style.display = 'block';
-            document.getElementById('live-video').style.display = 'block';
-        } else if (category === 'gaming') {
-            document.getElementById('gaming-art').style.display = 'block';
-            document.getElementById('gaming-video').style.display = 'block';
-        }
-    }
-</script>
-
+    </script>
 </body>
 </html>
