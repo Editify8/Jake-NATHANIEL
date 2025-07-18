@@ -114,7 +114,7 @@
             visibility: hidden;
             transform: translateY(-10px);
             transition: all 0.3s ease;
-            min-width: 150px;
+            min-width: 200px;
             z-index: 1001;
         }
 
@@ -131,6 +131,7 @@
             padding: 10px 16px;
             border-bottom: 1px solid #eee;
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .dropdown-item:last-child {
@@ -140,6 +141,56 @@
         .dropdown-item:hover {
             background-color: #333;
             color: white;
+        }
+
+        /* Sub-dropdown styling */
+        .sub-dropdown {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background: white;
+            border: 2px solid #333;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+            min-width: 150px;
+            z-index: 1002;
+        }
+
+        .dropdown-item:hover .sub-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .sub-dropdown-item {
+            display: block;
+            color: #333;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .sub-dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .sub-dropdown-item:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        /* Arrow indicator for items with sub-menus */
+        .dropdown-item.has-submenu::after {
+            content: "▶";
+            float: right;
+            font-size: 12px;
+            margin-top: 2px;
         }
 
         /* Main Content */
@@ -479,6 +530,17 @@
             .features-grid {
                 grid-template-columns: 1fr;
             }
+
+            /* Mobile dropdown adjustments */
+            .sub-dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: 1px solid #eee;
+                border-top: none;
+            }
         }
 
         /* Tablet responsive - 2 columns */
@@ -505,8 +567,16 @@
                 <div class="nav-item">
                     <a href="#" class="nav-link" onclick="showSection('works')">Works</a>
                     <div class="dropdown">
-                        <a href="#" class="dropdown-item" onclick="showWorks('live')">Live Industry</a>
-                        <a href="#" class="dropdown-item" onclick="showWorks('gaming')">Gaming Sector</a>
+                        <a href="#" class="dropdown-item has-submenu">Live Industry</a>
+                        <div class="sub-dropdown">
+                            <a href="#" class="sub-dropdown-item" onclick="showWorks('live', 'art')">Art</a>
+                            <a href="#" class="sub-dropdown-item" onclick="showWorks('live', 'video')">Video Editing</a>
+                        </div>
+                        <a href="#" class="dropdown-item has-submenu">Gaming Sector</a>
+                        <div class="sub-dropdown">
+                            <a href="#" class="sub-dropdown-item" onclick="showWorks('gaming', 'art')">Art</a>
+                            <a href="#" class="sub-dropdown-item" onclick="showWorks('gaming', 'video')">Video Editing</a>
+                        </div>
                     </div>
                 </div>
                 <div class="nav-item">
@@ -587,99 +657,197 @@
         <div id="works" class="content-section">
             <h2 class="section-title">Our Works</h2>
             
-            <!-- Live Industry Thumbnails -->
-            <div id="live-works" style="display: none;">
-                <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px; color: #666;">Live Industry</h3>
+            <!-- Live Industry Art -->
+            <div id="live-art" style="display: none;">
+                <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px; color: #666;">Live Industry - Art</h3>
                 <div class="thumbnails-grid">
                     <div class="thumbnail-card">
-                        <div class="thumbnail-placeholder">Live Industry Thumbnail 1</div>
+                        <div class="thumbnail-placeholder">Corporate Logo Design</div>
                         <div class="thumbnail-info">
-                            <div class="thumbnail-title">Corporate Event</div>
-                            <span class="thumbnail-type">Standard</span>
-                        </div>
-                    </div>
-                    <div class="thumbnail-card">
-                        <div class="thumbnail-placeholder">Live Industry Thumbnail 2</div>
-                        <div class="thumbnail-info">
-                            <div class="thumbnail-title">Conference Coverage</div>
+                            <div class="thumbnail-title">Brand Identity Package</div>
                             <span class="thumbnail-type">Premium</span>
                         </div>
                     </div>
                     <div class="thumbnail-card">
-                        <div class="thumbnail-placeholder">Live Industry Thumbnail 3</div>
+                        <div class="thumbnail-placeholder">Event Poster Design</div>
                         <div class="thumbnail-info">
-                            <div class="thumbnail-title">Live Performance</div>
+                            <div class="thumbnail-title">Conference Promotional Art</div>
                             <span class="thumbnail-type">Standard</span>
                         </div>
                     </div>
                     <div class="thumbnail-card">
-                        <div class="thumbnail-placeholder">Live Industry Thumbnail 4</div>
+                        <div class="thumbnail-placeholder">Business Card Design</div>
                         <div class="thumbnail-info">
-                            <div class="thumbnail-title">Business Presentation</div>
-                            <span class="thumbnail-type">Premium</span>
-                        </div>
-                    </div>
-                    <div class="thumbnail-card">
-                        <div class="thumbnail-placeholder">Live Industry Thumbnail 5</div>
-                        <div class="thumbnail-info">
-                            <div class="thumbnail-title">Product Launch</div>
+                            <div class="thumbnail-title">Professional Stationery</div>
                             <span class="thumbnail-type">Standard</span>
                         </div>
                     </div>
                     <div class="thumbnail-card">
-                        <div class="thumbnail-placeholder">Live Industry Thumbnail 6</div>
+                        <div class="thumbnail-placeholder">Social Media Graphics</div>
                         <div class="thumbnail-info">
-                            <div class="thumbnail-title">Webinar Series</div>
+                            <div class="thumbnail-title">Corporate Social Assets</div>
                             <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Presentation Template</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Business Pitch Deck</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Infographic Design</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Data Visualization</div>
+                            <span class="thumbnail-type">Standard</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Gaming Sector Thumbnails -->
-            <div id="gaming-works" style="display: none;">
-                <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px; color: #666;">Gaming Sector</h3>
+            <!-- Live Industry Video -->
+            <div id="live-video" style="display: none;">
+                <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px; color: #666;">Live Industry - Video Editing</h3>
                 <div class="thumbnails-grid">
                     <div class="thumbnail-card">
-                        <div class="thumbnail-placeholder">Gaming Thumbnail 1</div>
+                        <div class="thumbnail-placeholder">Corporate Event Video</div>
                         <div class="thumbnail-info">
-                            <div class="thumbnail-title">Action Game Trailer</div>
-                            <span class="thumbnail-type">Standard</span>
-                        </div>
-                    </div>
-                    <div class="thumbnail-card">
-                        <div class="thumbnail-placeholder">Gaming Thumbnail 2</div>
-                        <div class="thumbnail-info">
-                            <div class="thumbnail-title">RPG Cinematic</div>
+                            <div class="thumbnail-title">Annual Conference Recap</div>
                             <span class="thumbnail-type">Premium</span>
                         </div>
                     </div>
                     <div class="thumbnail-card">
-                        <div class="thumbnail-placeholder">Gaming Thumbnail 3</div>
+                        <div class="thumbnail-placeholder">Product Launch Video</div>
                         <div class="thumbnail-info">
-                            <div class="thumbnail-title">Gameplay Montage</div>
-                            <span class="thumbnail-type">Standard</span>
-                        </div>
-                    </div>
-                    <div class="thumbnail-card">
-                        <div class="thumbnail-placeholder">Gaming Thumbnail 4</div>
-                        <div class="thumbnail-info">
-                            <div class="thumbnail-title">Tournament Highlight</div>
+                            <div class="thumbnail-title">Launch Campaign</div>
                             <span class="thumbnail-type">Premium</span>
                         </div>
                     </div>
                     <div class="thumbnail-card">
-                        <div class="thumbnail-placeholder">Gaming Thumbnail 5</div>
+                        <div class="thumbnail-placeholder">Training Video</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Employee Onboarding</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Live Stream Highlight</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Webinar Best Moments</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Testimonial Video</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Client Success Stories</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Company Overview</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">About Us Video</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gaming Art -->
+            <div id="gaming-art" style="display: none;">
+                <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px; color: #666;">Gaming Sector - Art</h3>
+                <div class="thumbnails-grid">
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Gaming Logo Design</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Esports Team Branding</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Twitch Overlay Design</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Stream Graphics Package</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Game Thumbnail Art</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">YouTube Gaming Thumbnails</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Discord Server Banner</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Gaming Community Assets</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Character Design</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Game Character Art</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Tournament Poster</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Esports Event Graphics</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gaming Video -->
+            <div id="gaming-video" style="display: none;">
+                <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px; color: #666;">Gaming Sector - Video Editing</h3>
+                <div class="thumbnails-grid">
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Gaming Montage</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Epic Gameplay Highlights</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Game Trailer</div>
                         <div class="thumbnail-info">
                             <div class="thumbnail-title">Indie Game Showcase</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Stream Highlights</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Twitch Best Moments</div>
                             <span class="thumbnail-type">Standard</span>
                         </div>
                     </div>
                     <div class="thumbnail-card">
-                        <div class="thumbnail-placeholder">Gaming Thumbnail 6</div>
+                        <div class="thumbnail-placeholder">Tournament Recap</div>
                         <div class="thumbnail-info">
-                            <div class="thumbnail-title">VR Experience</div>
+                            <div class="thumbnail-title">Esports Championship</div>
                             <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Gaming Tutorial</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">How-to Guide Video</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Game Review</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Critical Analysis Video</div>
+                            <span class="thumbnail-type">Standard</span>
                         </div>
                     </div>
                 </div>
