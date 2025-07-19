@@ -59,46 +59,6 @@
             display: block;
         }
 
-        /* Social Icons */
-        .social-icons {
-            position: fixed;
-            top: 15px;
-            right: 20px;
-            display: flex;
-            gap: 15px;
-            z-index: 1001;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            border: 2px solid #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .social-icon:hover {
-            background: #333;
-            border-color: #333;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .social-icon img {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-        }
-
-        .social-icon:hover img {
-            filter: brightness(0) invert(1);
-        }
-
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -112,8 +72,8 @@
             align-items: center;
             justify-content: center;
             gap: 40px;
-            padding-left: 160px;
-            padding-right: 160px;
+            padding-left: 80px;
+            padding-right: 80px;
         }
 
         .nav-item {
@@ -194,7 +154,7 @@
 
         /* Offset sections */
         .offset-section {
-            margin-left: 160px;
+            margin-left: 80px;
         }
 
         /* Home Section */
@@ -378,12 +338,16 @@
             margin-bottom: 10px;
         }
 
-        /* Updated Pricing Section - 4 Service Boxes */
+        /* Updated Pricing Section - 2x2 Grid Layout */
         .pricing-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
             gap: 30px;
             margin-top: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .pricing-card {
@@ -534,11 +498,11 @@
 
             .pricing-container {
                 grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, 1fr);
             }
 
             .social-icons {
-                top: 80px;
-                right: 10px;
+                display: none;
             }
 
             .top-left-logo {
@@ -568,9 +532,10 @@
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
+            
             .pricing-container {
                 grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr);
             }
         }
     </style>
@@ -579,16 +544,6 @@
     <!-- Top Left Logo -->
     <div class="top-left-logo">
         <img src="top_logo.jpg" alt="Top Logo" />
-    </div>
-
-    <!-- Social Icons -->
-    <div class="social-icons">
-        <a href="https://youtube.com/@editify-n1o?si=Z2irWdP4srR9E4tg" target="_blank" class="social-icon">
-            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
-        </a>
-        <a href="https://discord.gg/dvps2FDx96" target="_blank" class="social-icon">
-            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
-        </a>
     </div>
 
     <!-- Header Navigation -->
@@ -629,7 +584,7 @@
                     </div>
                 </div>
                 <div class="tagline">An Editing Service</div>
-
+                
                 <div class="features-grid">
                     <div class="feature-card">
                         <h3>⚡ Fast Turnaround</h3>
@@ -682,11 +637,11 @@
         <!-- Works Section -->
         <div id="works" class="content-section">
             <h2 class="section-title">Our Works</h2>
-
+            
             <!-- Live Industry Section -->
             <div id="live-industry" style="display: none;">
                 <div class="work-category-title">Live Industry</div>
-
+                
                 <!-- Arts Section -->
                 <div class="work-subsection-title">ARTS</div>
                 <div class="thumbnails-grid">
@@ -785,7 +740,7 @@
             <!-- Gaming Sector Section -->
             <div id="gaming-sector" style="display: none;">
                 <div class="work-category-title">Gaming Sector</div>
-
+                
                 <!-- Arts Section -->
                 <div class="work-subsection-title">ARTS</div>
                 <div class="thumbnails-grid">
@@ -992,11 +947,11 @@ it for the upcoming new servers...</div>
     <!-- Footer Icons -->
     <footer style="text-align: center; padding: 40px 0; background-color: rgba(255,255,255,0.8); margin-top: 60px;">
         <div style="display: flex; justify-content: center; gap: 20px;">
-            <a href="https://youtube.com/@editify-n1o?si=Z2irWdP4srR9E4tg" target="_blank" class="social-icon">
-                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+            <a href="https://youtube.com/@editify-n1o?si=Z2irWdP4srR9E4tg" target="_blank" style="width: 40px; height: 40px; background: rgba(255, 255, 255, 0.9); border-radius: 50%; border: 2px solid #ddd; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); text-decoration: none;">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" style="width: 24px; height: 24px; object-fit: contain;">
             </a>
-            <a href="https://discord.gg/dvps2FDx96" target="_blank" class="social-icon">
-                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
+            <a href="https://discord.gg/dvps2FDx96" target="_blank" style="width: 40px; height: 40px; background: rgba(255, 255, 255, 0.9); border-radius: 50%; border: 2px solid #ddd; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); text-decoration: none;">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" style="width: 24px; height: 24px; object-fit: contain;">
             </a>
         </div>
         <p style="margin-top: 20px; font-size: 14px; color: #777;">© 2025 Editify. All rights reserved.</p>
