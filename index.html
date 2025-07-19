@@ -35,29 +35,29 @@
             z-index: 1000;
         }
 
-         .top-left-logo {
-     position: fixed;
-     top: 15px;
-     left: 20px;
-     width: 60px; /* make width and height equal */
-     height: 60px;
-     background: rgba(255, 255, 255, 0.9);
-     border-radius: 50%; /* this makes it a circle */
-     border: 2px solid #ddd;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     z-index: 1001;
-     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
+        .top-left-logo {
+            position: fixed;
+            top: 15px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
 
         .top-left-logo img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;     /* fills the circle properly */
-          border-radius: 50%;    /* ensures circular shape */
-          display: block;        /* removes any extra spacing */
-}
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
 
         /* Social Icons */
         .social-icons {
@@ -183,652 +183,794 @@
             color: white;
         }
 
-        /* Sub-dropdown styling */
-        .sub-dropdown {
-            position: absolute;
-            top: 0;
-            left: 100%;
-            background: white;
-            border: 2px solid #333;
-            border-radius: 4px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateX(-10px);
-            transition: all 0.3s ease;
-            min-width: 180px;
-            z-index: 1002;
-        }
-
-        .dropdown-item:hover .sub-dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(0);
-        }
-
-        .sub-dropdown-item {
-            display: block;
-            color: #333;
-            text-decoration: none;
-            padding: 8px 12px;
-            border-bottom: 1px solid #eee;
-            transition: all 0.3s ease;
-            font-size: 14px;
-        }
-
-        .sub-dropdown-item:last-child {
-            border-bottom: none;
-        }
-
-        .sub-dropdown-item:hover {
-            background-color: #333;
-            color: white;
-        }
-
-        /* Arrow indicator for items with sub-menus */
-        .dropdown-item.has-submenu::after {
-            content: "▶";
-            float: right;
-            font-size: 12px;
-            margin-top: 2px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-bar {
-                flex-direction: column;
-                height: auto;
-                gap: 10px;
-                padding: 10px;
-            }
-
-            .social-icons {
-                top: 80px;
-                right: 10px;
-            }
-
-            .top-left-logo {
-                width: 50px;
-                height: 50px;
-                top: 10px;
-                left: 10px;
-            }
-
-            .nav-bar {
-                padding-left: 0;
-                padding-right: 0;
-            }
-
-            /* Mobile dropdown adjustments */
-            .sub-dropdown {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                border: 1px solid #eee;
-                border-top: none;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Top Left Logo -->
-    <div class="top-left-logo">
-        <img src="top_logo.jpg" alt="Top Logo" />
-    </div>
-
-    <!-- Social Icons -->
-    <div class="social-icons">
-        <a href="https://youtube.com/@editify-n1o?si=Z2irWdP4srR9E4tg" target="_blank" class="social-icon">
-            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
-        </a>
-        <a href="https://discord.gg/dvps2FDx96" target="_blank" class="social-icon">
-            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
-        </a>
-    </div>
-
-    <!-- Header Navigation -->
-    <div class="header">
-        <div class="nav-container">
-            <div class="nav-bar">
-                <div class="nav-item">
-                    <a href="#" class="nav-link" onclick="showSection('home')">Home</a>
-                </div>
-                <div class="nav-item">
-                    <a href="#" class="nav-link" onclick="showSection('works')">Works</a>
-                    <div class="dropdown">
-                        <a href="#" class="dropdown-item has-submenu">Live Industry</a>
-                        <div class="sub-dropdown">
-                            <a href="#" class="sub-dropdown-item" onclick="showWorks('live', 'arts')">Arts</a>
-                            <a href="#" class="sub-dropdown-item" onclick="showWorks('live', 'video')">Video Editing</a>
-                        </div>
-                        <a href="#" class="dropdown-item has-submenu">Gaming Sector</a>
-                        <div class="sub-dropdown">
-                            <a href="#" class="sub-dropdown-item" onclick="showWorks('gaming', 'arts')">Arts</a>
-                            <a href="#" class="sub-dropdown-item" onclick="showWorks('gaming', 'video')">Video Editing</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="nav-item">
-                    <a href="#" class="nav-link" onclick="showSection('reviews')">Reviews</a>
-                </div>
-                <div class="nav-item">
-                    <a href="#" class="nav-link" onclick="showSection('prices')">Prices</a>
-                </div>
-                <div class="nav-item">
-                    <a href="#" class="nav-link" onclick="showSection('about')">About</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(section => section.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
-        }
-
-        function showWorks(category, type) {
-            const ids = [
-                'live-arts', 'live-video',
-                'gaming-arts', 'gaming-video'
-            ];
-
-            ids.forEach(id => document.getElementById(id).style.display = 'none');
-
-            document.getElementById(category + '-' + type).style.display = 'block';
-        }
-    </script>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editing Service</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&display=swap');
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background-image: url('background.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* Header Navigation */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            border-bottom: 1px solid #e0e0e0;
-            z-index: 1000;
-        }
-
-         .top-left-logo {
-     position: fixed;
-     top: 15px;
-     left: 20px;
-     width: 60px; /* make width and height equal */
-     height: 60px;
-     background: rgba(255, 255, 255, 0.9);
-     border-radius: 50%; /* this makes it a circle */
-     border: 2px solid #ddd;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     z-index: 1001;
-     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-        .top-left-logo img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;     /* fills the circle properly */
-          border-radius: 50%;    /* ensures circular shape */
-          display: block;        /* removes any extra spacing */
-}
-
-        /* Social Icons */
-        .social-icons {
-            position: fixed;
-            top: 15px;
-            right: 20px;
-            display: flex;
-            gap: 15px;
-            z-index: 1001;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            border: 2px solid #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .social-icon:hover {
-            background: #333;
-            border-color: #333;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .social-icon img {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-        }
-
-        .social-icon:hover img {
-            filter: brightness(0) invert(1);
-        }
-
-        .nav-container {
+        /* Main Content */
+        .main-content {
+            margin-top: 120px;
+            padding: 40px 20px;
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .nav-bar {
-            height: 60px;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 40px;
-            padding-left: 160px;
-            padding-right: 160px;
+        /* Offset sections */
+        .offset-section {
+            margin-left: 160px;
         }
 
-        .nav-item {
-            position: relative;
-            display: inline-block;
+        /* Home Section */
+        .home-section {
+            text-align: center;
+            padding: 60px 0;
         }
 
-        .nav-link {
-            color: #333;
-            text-decoration: none;
-            padding: 12px 20px;
-            border: 2px solid transparent;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-family: 'Bebas Neue', cursive;
-            font-size: 18px;
-        }
-
-        .nav-link:hover {
-            background-color: #333;
-            color: white;
-            border-color: #333;
-        }
-
-        /* Dropdown Menu */
-        .dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: white;
-            border: 2px solid #333;
-            border-radius: 4px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            min-width: 200px;
-            z-index: 1001;
-        }
-
-        .nav-item:hover .dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-item {
-            display: block;
-            color: #333;
-            text-decoration: none;
-            padding: 10px 16px;
-            border-bottom: 1px solid #eee;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .dropdown-item:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown-item:hover {
-            background-color: #333;
-            color: white;
-        }
-
-        /* Sub-dropdown styling */
-        .sub-dropdown {
-            position: absolute;
-            top: 0;
-            left: 100%;
-            background: white;
-            border: 2px solid #333;
-            border-radius: 4px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateX(-10px);
-            transition: all 0.3s ease;
-            min-width: 180px;
-            z-index: 1002;
-        }
-
-        .dropdown-item:hover .sub-dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(0);
-        }
-
-        .sub-dropdown-item {
-            display: block;
-            color: #333;
-            text-decoration: none;
-            padding: 8px 12px;
-            border-bottom: 1px solid #eee;
-            transition: all 0.3s ease;
-            font-size: 14px;
-        }
-
-        .sub-dropdown-item:last-child {
-            border-bottom: none;
-        }
-
-        .sub-dropdown-item:hover {
-            background-color: #333;
-            color: white;
-        }
-
-        /* Arrow indicator for items with sub-menus */
-        .dropdown-item.has-submenu::after {
-            content: "▶";
-            float: right;
-            font-size: 12px;
-            margin-top: 2px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-bar {
-                flex-direction: column;
-                height: auto;
-                gap: 10px;
-                padding: 10px;
-            }
-
-            .social-icons {
-                top: 80px;
-                right: 10px;
-            }
-
-            .top-left-logo {
-                width: 50px;
-                height: 50px;
-                top: 10px;
-                left: 10px;
-            }
-
-            .nav-bar {
-                padding-left: 0;
-                padding-right: 0;
-            }
-
-            /* Mobile dropdown adjustments */
-            .sub-dropdown {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                border: 1px solid #eee;
-                border-top: none;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Top Left Logo -->
-    <div class="top-left-logo">
-        <img src="top_logo.jpg" alt="Top Logo" />
-    </div>
-
-    <!-- Social Icons -->
-    <div class="social-icons">
-        <a href="https://youtube.com/@editify-n1o?si=Z2irWdP4srR9E4tg" target="_blank" class="social-icon">
-            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
-        </a>
-        <a href="https://discord.gg/dvps2FDx96" target="_blank" class="social-icon">
-            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
-        </a>
-    </div>
-
-    <!-- Header Navigation -->
-    <div class="header">
-        <div class="nav-container">
-            <div class="nav-bar">
-                <div class="nav-item">
-                    <a href="#" class="nav-link" onclick="showSection('home')">Home</a>
-                </div>
-                <div class="nav-item">
-                    <a href="#" class="nav-link" onclick="showSection('works')">Works</a>
-                    <div class="dropdown">
-                        <a href="#" class="dropdown-item has-submenu">Live Industry</a>
-                        <div class="sub-dropdown">
-                            <a href="#" class="sub-dropdown-item" onclick="showWorks('live', 'arts')">Arts</a>
-                            <a href="#" class="sub-dropdown-item" onclick="showWorks('live', 'video')">Video Editing</a>
-                        </div>
-                        <a href="#" class="dropdown-item has-submenu">Gaming Sector</a>
-                        <div class="sub-dropdown">
-                            <a href="#" class="sub-dropdown-item" onclick="showWorks('gaming', 'arts')">Arts</a>
-                            <a href="#" class="sub-dropdown-item" onclick="showWorks('gaming', 'video')">Video Editing</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="nav-item">
-                    <a href="#" class="nav-link" onclick="showSection('reviews')">Reviews</a>
-                </div>
-                <div class="nav-item">
-                    <a href="#" class="nav-link" onclick="showSection('prices')">Prices</a>
-                </div>
-                <div class="nav-item">
-                    <a href="#" class="nav-link" onclick="showSection('about')">About</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(section => section.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
-        }
-
-        function showWorks(category, type) {
-            const ids = [
-                'live-arts', 'live-video',
-                'gaming-arts', 'gaming-video'
-            ];
-
-            ids.forEach(id => document.getElementById(id).style.display = 'none');
-
-            document.getElementById(category + '-' + type).style.display = 'block';
-        }
-    </script>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Footer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background-image: url('background.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* Footer Navigation Styles */
-        .footer-nav {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
+        .logo-container {
             margin-bottom: 30px;
-            flex-wrap: wrap;
         }
 
-        .footer-nav-item {
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-nav-link {
-            color: #555;
-            text-decoration: none;
-            padding: 8px 16px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 14px;
-            background: rgba(255, 255, 255, 0.9);
-        }
-
-        .footer-nav-link:hover {
-            background-color: #333;
-            color: white;
-            border-color: #333;
-        }
-
-        /* Footer Dropdown Menu */
-        .footer-dropdown {
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            border: 2px solid #333;
-            border-radius: 4px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateX(-50%) translateY(10px);
-            transition: all 0.3s ease;
-            min-width: 180px;
-            z-index: 1001;
-            margin-bottom: 5px;
-        }
-
-        .footer-nav-item:hover .footer-dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .footer-dropdown-item {
-            display: block;
-            color: #333;
-            text-decoration: none;
-            padding: 10px 16px;
-            border-bottom: 1px solid #e<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Footer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background-image: url('background.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* Social Icons */
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.9);
+        .logo-placeholder {
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            border: 2px solid #ddd;
+            border: 3px solid #ddd;
+            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            background: #f8f8f8;
+            overflow: hidden;
+            position: relative;
         }
 
-        .social-icon:hover {
+        .logo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+        }
+
+        .tagline {
+            font-size: 24px;
+            font-weight: 300;
+            color: #333;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+            padding: 40px 0;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            letter-spacing: 1px;
+        }
+
+        .work-category-title {
+            font-size: 28px;
+            font-weight: 600;
+            text-align: center;
+            margin: 50px 0 30px 0;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 3px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .work-subsection-title {
+            font-size: 24px;
+            font-weight: 500;
+            text-align: center;
+            margin: 40px 0 30px 0;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Thumbnails Grid */
+        .thumbnails-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .thumbnail-card {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .thumbnail-card:hover {
+            border-color: #333;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .thumbnail-placeholder {
+            width: 100%;
+            height: 200px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .thumbnail-info {
+            padding: 20px;
+        }
+
+        .thumbnail-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .thumbnail-type {
+            display: inline-block;
+            padding: 4px 12px;
             background: #333;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Reviews Section */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .review-card {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 30px;
+            background: #fafafa;
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
             border-color: #333;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
-        .social-icon img {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
+        .review-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+            font-style: italic;
         }
 
-        .social-icon:hover img {
-            filter: brightness(0) invert(1);
+        .review-author {
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stars {
+            color: #ffa500;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* Updated Pricing Section - 4 Service Boxes */
+        .pricing-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pricing-card {
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            padding: 30px 25px;
+            text-align: center;
+            background: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .pricing-card:hover {
+            border-color: #333;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .pricing-type {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pricing-amount {
+            font-size: 36px;
+            font-weight: 300;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            color: #555;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features li:before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .pricing-features li.negative:before {
+            content: "✗ ";
+            color: #dc3545;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .about-content p {
+            margin-bottom: 25px;
+        }
+
+        /* Updated Features Grid - 3 columns, square with rounded edges */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feature-card {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 20px;
+            padding: 30px 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            color: #333;
+            transition: all 0.3s ease;
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .feature-card:hover {
+            background: #333;
+            color: white;
+            border-color: #333;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card:hover h3 {
+            color: white;
+        }
+
+        .feature-card:hover p {
+            color: #f0f0f0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-bar {
+                flex-direction: column;
+                height: auto;
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .main-content {
+                margin-top: 160px;
+            }
+
+            .thumbnails-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-container {
+                grid-template-columns: 1fr;
+            }
+
+            .social-icons {
+                top: 80px;
+                right: 10px;
+            }
+
+            .top-left-logo {
+                width: 50px;
+                height: 50px;
+                top: 10px;
+                left: 10px;
+            }
+
+            .nav-bar {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .offset-section {
+                margin-left: 0;
+            }
+
+            /* Make features responsive - 1 column on mobile */
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Tablet responsive - 2 columns */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .pricing-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Top Left Logo -->
+    <div class="top-left-logo">
+        <img src="top_logo.jpg" alt="Top Logo" />
+    </div>
+
+    <!-- Social Icons -->
+    <div class="social-icons">
+        <a href="https://youtube.com/@editify-n1o?si=Z2irWdP4srR9E4tg" target="_blank" class="social-icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+        </a>
+        <a href="https://discord.gg/dvps2FDx96" target="_blank" class="social-icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
+        </a>
+    </div>
+
+    <!-- Header Navigation -->
+    <div class="header">
+        <div class="nav-container">
+            <div class="nav-bar">
+                <div class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('home')">Home</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('works')">Works</a>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item" onclick="showWorks('live-industry')">Live Industry</a>
+                        <a href="#" class="dropdown-item" onclick="showWorks('gaming-sector')">Gaming Sector</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('reviews')">Reviews</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('prices')">Prices</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('about')">About</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Home Section -->
+        <div id="home" class="content-section active offset-section">
+            <div class="home-section">
+                <div class="logo-container">
+                    <div class="logo-placeholder">
+                        <img src="logo.jpg" alt="Logo" />
+                    </div>
+                </div>
+                <div class="tagline">An Editing Service</div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>⚡ Fast Turnaround</h3>
+                        <p>Get your projects delivered quickly — whether it's a video edit, animation, banner, or thumbnail. We prioritize speed without compromising quality.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>💰 Best Price Guarantee</h3>
+                        <p>We offer premium creative services at unbeatable prices. You get the best value across editing, design, and animation.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>👨‍💻 Top-Tier Creatives</h3>
+                        <p>Our team includes editors, designers, and animators who've worked with well over 100 clients, ensuring top-quality results every time.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>♻ Unlimited Revisions</h3>
+                        <p>We're not done until you're happy. Enjoy unlimited fair revisions to perfect your project without extra charges.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>🔁 1–2 Revisions on Standard Plans</h3>
+                        <p>Need minor tweaks? Our basic plans come with 1–2 free revision rounds for quick refinements and polish.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>🧠 Niche-Specific Expertise</h3>
+                        <p>From Minecraft content to corporate reels, stream overlays to animated logos — we assign specialists based on your niche.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>📊 Quality Control & Feedback</h3>
+                        <p>Each deliverable goes through a strict review process to maintain quality. We also offer feedback and optimization tips.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>🎯 Personalized Approach</h3>
+                        <p>Your brand is unique — so is our work. Every asset is custom-made to fit your style, audience, and goals.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>🧩 All-in-One Creative Services</h3>
+                        <p>Video editing, animations, thumbnails, banners, overlays, and more — all under one roof, all by one reliable team.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Works Section -->
+        <div id="works" class="content-section">
+            <h2 class="section-title">Our Works</h2>
+            
+            <!-- Live Industry Section -->
+            <div id="live-industry" style="display: none;">
+                <div class="work-category-title">Live Industry</div>
+                
+                <!-- Arts Section -->
+                <div class="work-subsection-title">ARTS</div>
+                <div class="thumbnails-grid">
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Corporate Logo Design</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Brand Identity Package</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Event Poster Design</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Conference Promotional Art</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Business Card Design</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Professional Stationery</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Social Media Graphics</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Corporate Social Assets</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Presentation Template</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Business Pitch Deck</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Infographic Design</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Data Visualization</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Editing Section -->
+                <div class="work-subsection-title">VIDEO EDITING</div>
+                <div class="thumbnails-grid">
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Corporate Event Video</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Annual Conference Recap</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Product Launch Video</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Launch Campaign</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Training Video</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Employee Onboarding</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Live Stream Highlight</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Webinar Best Moments</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Testimonial Video</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Client Success Stories</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Company Overview</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">About Us Video</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gaming Sector Section -->
+            <div id="gaming-sector" style="display: none;">
+                <div class="work-category-title">Gaming Sector</div>
+                
+                <!-- Arts Section -->
+                <div class="work-subsection-title">ARTS</div>
+                <div class="thumbnails-grid">
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Gaming Logo Design</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Esports Team Branding</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Twitch Overlay Design</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Stream Graphics Package</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Game Thumbnail Art</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">YouTube Gaming Thumbnails</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Discord Server Banner</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Gaming Community Assets</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Character Design</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Game Character Art</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Tournament Poster</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Esports Event Graphics</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Editing Section -->
+                <div class="work-subsection-title">VIDEO EDITING</div>
+                <div class="thumbnails-grid">
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Gaming Montage</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Epic Gameplay Highlights</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Game Trailer</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Game Teaser Showcase</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Funny Edits</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Stream Meme Compilations</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Stream Recap</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Best of the Stream</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Tournament Coverage</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Esports Event Highlights</div>
+                            <span class="thumbnail-type">Premium</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-card">
+                        <div class="thumbnail-placeholder">Reaction Video</div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">Gaming Content Reactions</div>
+                            <span class="thumbnail-type">Standard</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reviews Section -->
+        <div id="reviews" class="content-section">
+            <h2 class="section-title">Client Reviews</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <div class="review-text">Absolutely amazing work! My videos came out perfect and the delivery was fast.</div>
+                    <div class="review-author">- Alex (YouTube Creator)</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★☆</div>
+                    <div class="review-text">Great thumbnails and overall value. Will order again!</div>
+ <div class="review-author">- Priya (Streamer)</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <div class="review-text">Highly recommend for professional video editing. They fixed every revision I asked for.</div>
+                    <div class="review-author">- Sam (Event Organizer)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing Section -->
+        <div id="prices" class="content-section">
+            <h2 class="section-title">Pricing Plans</h2>
+            <div class="pricing-container">
+                <!-- Standard Art -->
+                <div class="pricing-card">
+                    <div class="pricing-type">🖼 Standard Art</div>
+                    <div class="pricing-amount">$10</div>
+                    <ul class="pricing-features">
+                        <li>1 Revision (any 1 change)</li>
+                        <li>1–4 Day Delivery</li>
+                        <li>Unlimited Reasonable Revisions</li>
+                        <li>Direct Implementation</li>
+                    </ul>
+                </div>
+                <!-- Premium Art -->
+                <div class="pricing-card">
+                    <div class="pricing-type">🖌 Premium Art</div>
+                    <div class="pricing-amount">$15</div>
+                    <ul class="pricing-features">
+                        <li>3 Revisions (any 3 changes)</li>
+                        <li>Unlimited Reasonable Revisions</li>
+                        <li>1–2 Day Delivery</li>
+                        <li>Creator Input Implementation</li>
+                        <li>Quality Checked by Experts</li>
+                    </ul>
+                </div>
+                <!-- Standard Video -->
+                <div class="pricing-card">
+                    <div class="pricing-type">🎬 Standard Video Editing</div>
+                    <div class="pricing-amount">$20</div>
+                    <ul class="pricing-features">
+                        <li>2 min basic OR 10 min low-edit</li>
+                        <li>Variable Pricing (custom)</li>
+                        <li>2 Revisions</li>
+                        <li>No Formal QA</li>
+                        <li>Unlimited Reasonable Revisions</li>
+                        <li>Reassignment if unsatisfactory</li>
+                    </ul>
+                </div>
+                <!-- Premium Video -->
+                <div class="pricing-card">
+                    <div class="pricing-type">🎥 Premium Video Editing</div>
+                    <div class="pricing-amount">$40</div>
+                    <ul class="pricing-features">
+                        <li>10 min high-quality edit</li>
+                        <li>Variable Pricing (custom)</li>
+                        <li>4 Revisions</li>
+                        <li>Multiple QA Checks</li>
+                        <li>Unlimited Reasonable Revisions</li>
+                        <li>Reassignment If Not Approved</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div id="about" class="content-section">
+            <h2 class="section-title">About Editify</h2>
+            <div class="about-content">
+                <p>At Editify, we specialize in delivering top-notch editing services tailored to both content creators and corporate clients. Our experience spans a wide range of industries, with dedicated specialists for every type of creative work — from YouTube thumbnails to professional reels.</p>
+                <p>We believe in fast delivery, affordable pricing, and unmatched quality. Every project is handled by a professional, reviewed for quality, and customized to match your unique vision.</p>
+                <p>Whether you're a streamer, brand, or business owner — Editify is your go-to partner for creative content that stands out.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer Icons -->
     <footer style="text-align: center; padding: 40px 0; background-color: rgba(255,255,255,0.8); margin-top: 60px;">
         <div style="display: flex; justify-content: center; gap: 20px;">
@@ -841,5 +983,36 @@
         </div>
         <p style="margin-top: 20px; font-size: 14px; color: #777;">© 2025 Editify. All rights reserved.</p>
     </footer>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+        }
+
+        function showWorks(categoryId) {
+            // Hide all work categories
+            const categories = ['live-industry', 'gaming-sector'];
+            categories.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.style.display = 'none';
+                }
+            });
+
+            // Show the selected category
+            const targetElement = document.getElementById(categoryId);
+            if (targetElement) {
+                targetElement.style.display = 'block';
+            }
+
+            // Also make sure we're on the works section
+            showSection('works');
+        }
+    </script>
 </body>
 </html>
