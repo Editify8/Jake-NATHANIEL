@@ -978,7 +978,6 @@ it for the upcoming new servers...</div>
             </div>
         </div>
 
-
         <!-- About Section -->
         <div id="about" class="content-section">
             <h2 class="section-title">About Editify</h2>
@@ -1032,6 +1031,10 @@ it for the upcoming new servers...</div>
             // Also make sure we're on the works section
             showSection('works');
         }
+
+        // Ensure functions are globally available
+        window.showSection = showSection;
+        window.showWorks = showWorks;
     </script>
 </body>
 </html>
