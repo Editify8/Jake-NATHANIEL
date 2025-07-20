@@ -214,6 +214,7 @@
             margin-bottom: 40px;
             color: #333;
             letter-spacing: 1px;
+            font-family: 'Bebas Neue', cursive;
         }
 
         .work-category-title {
@@ -419,6 +420,7 @@
             font-size: 18px;
             line-height: 1.8;
             color: #555;
+            font-family: 'Bebas Neue', cursive;
         }
 
         .about-content p {
@@ -479,7 +481,54 @@
             color: #f0f0f0;
         }
 
-        /* Responsive Design */
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 2px solid #333;
+            border-top: none;
+            z-index: 1000;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu-item {
+            display: block;
+            color: #333;
+            text-decoration: none;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mobile-menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu-item:hover {
+            background-color: #333;
+            color: white;
+        }
         @media (max-width: 768px) {
             .nav-bar {
                 flex-direction: column;
@@ -568,6 +617,19 @@
                 </div>
                 <div class="nav-item">
                     <a href="#" class="nav-link" onclick="showSection('about')">About</a>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">⋯</button>
+                
+                <!-- Mobile Menu -->
+                <div class="mobile-menu" id="mobileMenu">
+                    <a href="#" class="mobile-menu-item" onclick="showSection('home'); closeMobileMenu()">Home</a>
+                    <a href="#" class="mobile-menu-item" onclick="showWorks('live-industry'); closeMobileMenu()">Live Industry</a>
+                    <a href="#" class="mobile-menu-item" onclick="showWorks('gaming-sector'); closeMobileMenu()">Gaming Sector</a>
+                    <a href="#" class="mobile-menu-item" onclick="showSection('reviews'); closeMobileMenu()">Reviews</a>
+                    <a href="#" class="mobile-menu-item" onclick="showSection('prices'); closeMobileMenu()">Prices</a>
+                    <a href="#" class="mobile-menu-item" onclick="showSection('about'); closeMobileMenu()">About</a>
                 </div>
             </div>
         </div>
@@ -875,7 +937,6 @@ it for the upcoming new servers...</div>
             </div>
         </div>
 
-        <!-- Pricing Section -->
         <div id="prices" class="content-section">
             <h2 class="section-title">Pricing Plans</h2>
             <div class="pricing-container">
@@ -985,9 +1046,31 @@ it for the upcoming new servers...</div>
             showSection('works');
         }
 
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.remove('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            
+            if (!mobileMenu.contains(event.target) && !toggle.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
         // Ensure functions are globally available
         window.showSection = showSection;
         window.showWorks = showWorks;
+        window.toggleMobileMenu = toggleMobileMenu;
+        window.closeMobileMenu = closeMobileMenu;
     </script>
 </body>
 </html>
