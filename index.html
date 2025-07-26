@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,6 +58,43 @@
             object-fit: cover;
             border-radius: 50%;
             display: block;
+        }
+
+        /* App Logo Styles */
+        .app-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            margin: 0 auto 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-logo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(45deg) translateX(-100%); }
+            50% { transform: rotate(45deg) translateX(100%); }
+            100% { transform: rotate(45deg) translateX(100%); }
         }
 
         .nav-container {
@@ -241,6 +279,15 @@
             letter-spacing: 1px;
         }
 
+        /* Fix for Works Section - Make it visible */
+        #works {
+            display: block;
+        }
+
+        #works .content-section {
+            display: block;
+        }
+
         /* Thumbnails Grid */
         .thumbnails-grid {
             display: grid;
@@ -266,13 +313,34 @@
         .thumbnail-placeholder {
             width: 100%;
             height: 200px;
-            background: #f0f0f0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #666;
-            font-size: 14px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
             border-bottom: 1px solid #eee;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .thumbnail-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: slideShow 2s infinite;
+        }
+
+        @keyframes slideShow {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
 
         .thumbnail-info {
@@ -496,6 +564,48 @@
             margin-bottom: 25px;
         }
 
+        /* About Logo Styles */
+        .about-logo-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .about-logo {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-logo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: aboutShine 4s infinite;
+        }
+
+        @keyframes aboutShine {
+            0% { transform: rotate(45deg) translateX(-100%); }
+            50% { transform: rotate(45deg) translateX(100%); }
+            100% { transform: rotate(45deg) translateX(100%); }
+        }
+
         /* Updated Features Grid - 3 columns, square with rounded edges */
         .features-grid {
             display: grid;
@@ -670,9 +780,9 @@
     </style>
 </head>
 <body>
-    <!-- Top Left Logo -->
+    <!-- Top Left Logo with App Logo Design -->
     <div class="top-left-logo">
-        <img src="top_logo.jpg" alt="Top Logo" />
+        <div class="app-logo">E</div>
     </div>
 
     <!-- Header Navigation -->
@@ -778,9 +888,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Live Industry Section -->
-            <div id="live-industry" style="display: none;">
-                <div class="work-category-title">Live Industry</div>
+        </div>
                 
                 <!-- Arts Section -->
                 <div class="work-subsection-title">ARTS</div>
