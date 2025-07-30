@@ -36,7 +36,7 @@
             z-index: 1000;
         }
 
-        .top-left-logo {
+        .top-left- {
             position: fixed;
             top: 15px;
             left: 20px;
@@ -338,10 +338,20 @@
         .review-logo {
             width: 30px;
             height: 30px;
+            border-radius: 50%; /* makes it circular */
             position: absolute;
             top: 15px;
             left: 15px;
+            display: block; /* ensures it's always shown */
         }
+
+        }
+        .review-logo {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
         .review-box {
             position: relative; /* Required for absolute positioning of logo */
         }
