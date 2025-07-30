@@ -299,15 +299,16 @@
             letter-spacing: 1px;
         }
 
-        /* Reviews Section */
+       /* Reviews Section */
         .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+             gap: 30px;
+             margin-top: 30px;
         }
 
         .review-card {
+            position: relative; /* Needed for absolutely positioned logo */
             border: 2px solid #ddd;
             border-radius: 8px;
             padding: 30px;
@@ -335,15 +336,25 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+
+        /* Review logo */
         .review-logo {
             width: 30px;
             height: 30px;
             position: absolute;
             top: 15px;
             left: 15px;
+            border-radius: 50%;
+            display: block;
         }
-        .review-box {
-            position: relative; /* Required for absolute positioning of logo */
+
+        /* Hide other images unless hovered */
+        .review-card img:not(.review-logo) {
+            display: none;
+        }
+
+        .review-card:hover img:not(.review-logo) {
+            display: block;
         }
 
         
