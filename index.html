@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editing Service</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&display=swap');
 
         body {
             font-family: 'Arial', sans-serif;
@@ -245,7 +246,7 @@
         /* Thumbnails Grid - Fixed 3 columns */
         .thumbnails-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Always 3 equal columns */
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             margin-top: 30px;
         }
@@ -299,28 +300,16 @@
             letter-spacing: 1px;
         }
 
-        /* Optional: Make it responsive */
-        @media (max-width: 1024px) {
-            .thumbnails-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
-            }
-        }
-
-        @media (max-width: 640px) {
-            .thumbnails-grid {
-                grid-template-columns: 1fr; /* 1 column on mobile */
-            }
-        }
-       /* Reviews Section */
+        /* Reviews Section */
         .reviews-grid {
-             display: grid;
-             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-             gap: 30px;
-             margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
         }
 
         .review-card {
-            position: relative; /* Needed for absolutely positioned logo */
+            position: relative;
             border: 2px solid #ddd;
             border-radius: 8px;
             padding: 30px;
@@ -349,7 +338,6 @@
             letter-spacing: 1px;
         }
 
-        /* Review logo */
         .review-logo {
             width: 30px;
             height: 30px;
@@ -360,7 +348,6 @@
             display: block;
         }
 
-        /* Hide other images unless hovered */
         .review-card img:not(.review-logo) {
             display: none;
         }
@@ -369,7 +356,6 @@
             display: block;
         }
 
-        
         .stars {
             color: #ffa500;
             font-size: 18px;
@@ -577,6 +563,31 @@
             background-color: #333;
             color: white;
         }
+
+        .highlight {
+            border: 3px solid #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+            transform: scale(1.02);
+            border-radius: 12px;
+            padding: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .thumbnails-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .pricing-container {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-bar {
                 flex-direction: column;
@@ -598,10 +609,6 @@
                 grid-template-rows: repeat(4, 1fr);
             }
 
-            .social-icons {
-                display: none;
-            }
-
             .top-left-logo {
                 width: 50px;
                 height: 50px;
@@ -618,36 +625,16 @@
                 margin-left: 0;
             }
 
-            /* Make features responsive - 1 column on mobile */
             .features-grid {
                 grid-template-columns: 1fr;
             }
-        }
-
-        /* Tablet responsive - 2 columns */
-        @media (max-width: 1024px) and (min-width: 769px) {
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .pricing-container {
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(2, 1fr);
-            }
-        }
-        .highlight {
-        border: 3px solid #3498db;
-        box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
-        transform: scale(1.02);
-        border-radius: 12px;
-        padding: 10px;
         }
     </style>
 </head>
 <body>
     <!-- Top Left Logo -->
     <div class="top-left-logo">
-        <img src="top_logo.jpg" alt="Top Logo" />
+        <img src="top_logo.jpg" alt="Company Logo" />
     </div>
 
     <!-- Header Navigation -->
@@ -689,6 +676,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- Main Content -->
     <div class="main-content">
