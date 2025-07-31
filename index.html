@@ -242,10 +242,10 @@
             letter-spacing: 1px;
         }
 
-        /* Thumbnails Grid */
+        /* Thumbnails Grid - Fixed 3 columns */
         .thumbnails-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr); /* Always 3 equal columns */
             gap: 30px;
             margin-top: 30px;
         }
@@ -299,6 +299,18 @@
             letter-spacing: 1px;
         }
 
+        /* Optional: Make it responsive */
+        @media (max-width: 1024px) {
+            .thumbnails-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+            }
+        }
+
+        @media (max-width: 640px) {
+            .thumbnails-grid {
+                grid-template-columns: 1fr; /* 1 column on mobile */
+            }
+        }
        /* Reviews Section */
         .reviews-grid {
              display: grid;
