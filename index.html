@@ -367,81 +367,140 @@
             margin-bottom: 10px;
         }
 
-        /* Updated  Section - 2x2 Grid Layout */
-        .pricing-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            gap: 30px;
-            margin-top: 40px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+            .pricing-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+                margin-top: 40px;
+                max-width: 900px;
+                margin-left: auto;
+                margin-right: auto;
+            }
 
-        .pricing-card {
-            position: relative;
-            border: 2px solid #ddd;
-            border-radius: 12px;
-            padding: 30px 25px;
-            text-align: center;
-            background: white;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
+            .pricing-card {
+                position: relative;
+                border: 2px solid #ddd;
+                border-radius: 12px;
+                padding: 30px 25px;
+                text-align: center;
+                background: white;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                min-height: 350px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
 
-        .pricing-card:hover {
-            border-color: #333;
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
+            .pricing-card:hover {
+                border-color: #333;
+                transform: translateY(-5px);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            }
 
-        .pricing-type {
-            font-size: 22px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+            .pricing-type {
+                font-size: 22px;
+                font-weight: 600;
+                color: #333;
+                margin-bottom: 15px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
 
-        .pricing-amount {
-            font-size: 36px;
-            font-weight: 300;
-            color: #333;
-            margin-bottom: 25px;
-        }
+            .pricing-amount {
+                font-size: 36px;
+                font-weight: 300;
+                color: #333;
+                margin-bottom: 25px;
+            }
 
-        .pricing-features {
-            list-style: none;
-            margin-bottom: 20px;
-            text-align: left;
-        }
+            .pricing-features {
+                list-style: none;
+                margin-bottom: 20px;
+                text-align: left;
+                flex-grow: 1;
+            }
 
-        .pricing-features li {
-            padding: 8px 0;
-            color: #555;
-            border-bottom: 1px solid #eee;
-            font-size: 14px;
-            line-height: 1.4;
-        }
+            .pricing-features li {
+                padding: 8px 0;
+                color: #555;
+                border-bottom: 1px solid #eee;
+                font-size: 14px;
+                line-height: 1.4;
+            }
 
-        .pricing-features li:last-child {
-            border-bottom: none;
-        }
+            .pricing-features li:last-child {
+                border-bottom: none;
+            }
 
-        .pricing-features li:before {
-            content: "✓ ";
-            color: #28a745;
-            font-weight: bold;
-            margin-right: 8px;
-        }
+            .pricing-features li:before {
+                content: "✓ ";
+                color: #28a745;
+                font-weight: bold;
+                margin-right: 8px;
+            }
 
-        .pricing-features li.negative:before {
-            content: "✗ ";
-            color: #dc3545;
-        }
+            /* Fixed Popular Badge */
+            .popular-badge {
+                position: absolute;
+                top: -12px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: linear-gradient(45deg, #3498db, #2980b9);
+                color: white;
+                padding: 8px 20px;
+                border-radius: 20px;
+                font-size: 12px;
+                font-weight: bold;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+                z-index: 10;
+            }
 
+            .highlight {
+                border: 3px solid #3498db;
+                box-shadow: 0 0 20px rgba(52, 152, 219, 0.3);
+                transform: scale(1.02);
+            }
+
+            .highlight:hover {
+                transform: translateY(-5px) scale(1.02);
+                border-color: #2980b9;
+            }
+
+            /* Responsive Design for Pricing */
+            @media (max-width: 768px) {
+                .pricing-container {
+                    grid-template-columns: 1fr;
+                    gap: 20px;
+                    max-width: 400px;
+                }
+                
+                .pricing-card {
+                    min-height: 300px;
+                }
+                
+                .popular-badge {
+                    font-size: 10px;
+                    padding: 6px 16px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .pricing-type {
+                    font-size: 18px;
+                }
+                
+                .pricing-amount {
+                    font-size: 28px;
+                }
+                
+                .pricing-features li {
+                    font-size: 13px;
+                }
+            }
+        
         /* About Section */
         .about-content {
             max-width: 800px;
@@ -1044,6 +1103,7 @@
             </div>
         </div>
 
+        <!-- Fixed Pricing Section -->
         <div id="prices" class="content-section">
             <h2 class="section-title">Pricing Plans</h2>
             <div class="pricing-container">
@@ -1058,6 +1118,7 @@
                         <li>Direct Implementation</li>
                     </ul>
                 </div>
+                
                 <!-- Premium Art -->
                 <div class="pricing-card">
                     <div class="pricing-type">🖌 Premium Art</div>
@@ -1070,37 +1131,37 @@
                         <li>Quality Checked by Experts</li>
                     </ul>
                 </div>
+                
                 <!-- Standard Video -->
                 <div class="pricing-card highlight">
-                    <div style="position: absolute; top: -10px; left: -10px; background: linear-gradient(45deg, #3498db, #2980b9); color: white; padding: 8px 16px; border-radius: 25px; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3); z-index: 10;">
-                        <div style="position: absolute; top: -5px; left: -5px; width: calc(100% + 10px); height: calc(100% + 10px); border-radius: 30px; background: radial-gradient(circle, rgba(52, 152, 219, 0.3) 0%, transparent 70%); animation: pulse 2s infinite;"></div>
-                        Most Popular
-                    </div>
+                    <div class="popular-badge">Most Popular</div>
                     <div class="pricing-type">🎬 Standard Video Editing</div>
                     <div class="pricing-amount">$20</div>
                     <ul class="pricing-features">
-                        <li>2 min  OR 10 min low-edit</li>
-                        <li>Variable Pricing (custom)</li>
-                        <li>2 Revisions</li>
-                        <li>No Formal QA</li>
+                        <li>Up to 2 min high-quality edit</li>
+                        <li>OR 10 min basic edit</li>
+                        <li>2 Revisions included</li>
+                        <li>Fast turnaround</li>
                         <li>Unlimited Reasonable Revisions</li>
                         <li>Reassignment if unsatisfactory</li>
                     </ul>
                 </div>
+                
                 <!-- Premium Video -->
                 <div class="pricing-card">
                     <div class="pricing-type">🎥 Premium Video Editing</div>
                     <div class="pricing-amount">$40</div>
                     <ul class="pricing-features">
-                        <li>10 min high-quality edit</li>
-                        <li>Variable Pricing (custom)</li>
-                        <li>4 Revisions</li>
+                        <li>Up to 10 min high-quality edit</li>
+                        <li>Custom pricing for longer videos</li>
+                        <li>4 Revisions included</li>
                         <li>Multiple QA Checks</li>
                         <li>Unlimited Reasonable Revisions</li>
-                        <li>Reassignment If Not Approved</li>
+                        <li>Priority support & reassignment</li>
                     </ul>
                 </div>
             </div>
+        </div>
         </div>
 
         <!-- About Section -->
