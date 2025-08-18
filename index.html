@@ -387,18 +387,20 @@
                 padding: 30px 25px;
                 text-align: center;
                 background: white;
-                transition: all 0.3s ease;
+                transition: all 0.4s ease;
                 box-shadow: 0 4px 10px rgba(0,0,0,0.1);
                 min-height: 350px;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
+                cursor: pointer;
             }
 
             .pricing-card:hover {
+                background: #333;
                 border-color: #333;
-                transform: translateY(-5px);
-                box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+                transform: translateY(-8px) scale(1.02);
+                box-shadow: 0 12px 30px rgba(0,0,0,0.3);
             }
 
             .pricing-type {
@@ -408,6 +410,11 @@
                 margin-bottom: 15px;
                 text-transform: uppercase;
                 letter-spacing: 1px;
+                transition: color 0.4s ease;
+            }
+
+            .pricing-card:hover .pricing-type {
+                color: white;
             }
 
             .pricing-amount {
@@ -415,6 +422,11 @@
                 font-weight: 300;
                 color: #333;
                 margin-bottom: 25px;
+                transition: color 0.4s ease;
+            }
+
+            .pricing-card:hover .pricing-amount {
+                color: white;
             }
 
             .pricing-features {
@@ -430,6 +442,12 @@
                 border-bottom: 1px solid #eee;
                 font-size: 14px;
                 line-height: 1.4;
+                transition: all 0.4s ease;
+            }
+
+            .pricing-card:hover .pricing-features li {
+                color: #f0f0f0;
+                border-bottom-color: #555;
             }
 
             .pricing-features li:last-child {
@@ -441,9 +459,14 @@
                 color: #28a745;
                 font-weight: bold;
                 margin-right: 8px;
+                transition: color 0.4s ease;
             }
 
-            /* Fixed Popular Badge */
+            .pricing-card:hover .pricing-features li:before {
+                color: #4CAF50;
+            }
+
+            /* Enhanced Popular Badge Animation */
             .popular-badge {
                 position: absolute;
                 top: -12px;
@@ -459,6 +482,13 @@
                 letter-spacing: 1px;
                 box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
                 z-index: 10;
+                transition: all 0.4s ease;
+            }
+
+            .pricing-card:hover .popular-badge {
+                background: linear-gradient(45deg, #2980b9, #1f4e79);
+                box-shadow: 0 6px 20px rgba(52, 152, 219, 0.5);
+                transform: translateX(-50%) translateY(-2px);
             }
 
             .highlight {
@@ -468,8 +498,10 @@
             }
 
             .highlight:hover {
-                transform: translateY(-5px) scale(1.02);
-                border-color: #2980b9;
+                background: #333;
+                border-color: #333;
+                transform: translateY(-8px) scale(1.04);
+                box-shadow: 0 15px 35px rgba(0,0,0,0.4);
             }
 
             /* Responsive Design for Pricing */
