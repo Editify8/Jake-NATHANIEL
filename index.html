@@ -603,6 +603,64 @@
         .feature-card:hover p {
             color: #f0f0f0;
         }
+        /* Legal Documents Section Styles - INSERT HERE */
+        .legal-documents-section {
+            margin: 40px 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+                       
+        .document-item {
+            margin: 0 auto;
+        }
+
+        .document-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            font-family: 'Bebas Neue', cursive; /* Match your existing font */
+        }
+
+        .document-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: white;
+            color: blue;
+            text-decoration: underline;
+            border: 2px solid blue;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+                   
+        .document-btn:hover {
+            background-color: black;
+            color: blue;
+            text-decoration: underline;
+            border-color: black;
+        }
+
+        .document-btn:active {
+            transform: translateY(1px);
+        }
+
+        .document-btn:visited {
+            color: blue;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (min-width: 768px) {
+            .legal-documents-section {
+                    flex-direction: row;
+                    justify-content: center;
+                    gap: 50px;
+            }
+        }
 
         /* Mobile Menu */
         .mobile-menu-toggle {
@@ -1506,6 +1564,27 @@
             <p class="outro">
               ✨ <strong>Editify — Your Content, Elevated.</strong> ✨
             </p>
+        </div>
+
+        <!-- Legal Documents Section -->
+        <div class="legal-documents-section">
+            <div class="document-item">
+                <h3 class="document-title">Privacy Policy</h3>
+                <a href="https://github.com/yourusername/yourrepository/blob/main/privacy-policy.pdf" 
+                    target="_blank" 
+                    class="document-btn">
+                     View Privacy Policy
+                </a>
+            </div>
+    
+            <div class="document-item">
+                <h3 class="document-title">Terms and Conditions</h3>
+                <a href="https://github.com/yourusername/yourrepository/blob/main/terms-and-conditions.pdf" 
+                        target="_blank" 
+                        class="document-btn">
+                         View Terms and Conditions
+                </a>
+            </div>
         </div>
 
       <!-- Centered Circle Logo -->
