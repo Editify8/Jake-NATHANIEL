@@ -308,7 +308,7 @@
             letter-spacing: 1px;
         }
 
-        /* Reviews Section */
+/* Reviews Section */
         .reviews-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -318,29 +318,34 @@
 
         .review-card {
             position: relative;
-            border: 2px solid #ddd;
+            border: 2px solid black;
             border-radius: 8px;
             padding: 30px;
-            background: #fafafa;
+            background: black;
+            color: white;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .review-card:hover {
-            border-color: #333;
-            transform: translateY(-2px);
+            background: white;
+            color: black;
+            border-color: black;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
         }
 
         .review-text {
             font-size: 16px;
             line-height: 1.6;
-            color: #555;
+            color: inherit;
             margin-bottom: 20px;
             font-style: italic;
         }
 
         .review-author {
             font-weight: 600;
-            color: #333;
+            color: inherit;
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -370,6 +375,10 @@
             margin-bottom: 10px;
         }
 
+        /* Ensure stars remain orange even on hover */
+        .review-card:hover .stars {
+            color: #ffa500;
+        }
             .pricing-container {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
@@ -1570,7 +1579,7 @@
         <div class="legal-documents-section">
             <div class="document-item">
                 <h3 class="document-title">Privacy Policy</h3>
-                <a href="https://github.com/yourusername/yourrepository/blob/main/privacy-policy.pdf" 
+                <a href="privacy.pdf" 
                     target="_blank" 
                     class="document-btn">
                      View Privacy Policy
@@ -1579,7 +1588,7 @@
     
             <div class="document-item">
                 <h3 class="document-title">Terms and Conditions</h3>
-                <a href="https://github.com/yourusername/yourrepository/blob/main/terms-and-conditions.pdf" 
+                <a href="terms.pdf" 
                         target="_blank" 
                         class="document-btn">
                          View Terms and Conditions
